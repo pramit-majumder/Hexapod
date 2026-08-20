@@ -1,0 +1,8 @@
+{
+  "package_name": "hexapod_interfaces",
+  "non_idl_tuples": [
+    "/home/waves/hexapod/src/hexapod_interfaces:msg/LegActuators.msg",
+    "/home/waves/hexapod/src/hexapod_interfaces:msg/Coordinates.msg",
+    "/home/waves/hexapod/src/hexapod_interfaces:srv/InverseKinematics.srv"
+  ]
+}

@@ -1,0 +1,17 @@
+/home/waves/hexapod/install/hexapod_control/lib/hexapod_control/controller
+/home/waves/hexapod/install/hexapod_control/lib/hexapod_control/generate_angles
+/home/waves/hexapod/install/hexapod_control/share/ament_index/resource_index/package_run_dependencies/hexapod_control
+/home/waves/hexapod/install/hexapod_control/share/ament_index/resource_index/parent_prefix_path/hexapod_control
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/environment/ament_prefix_path.sh
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/environment/ament_prefix_path.dsv
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/environment/path.sh
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/environment/path.dsv
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/local_setup.bash
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/local_setup.sh
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/local_setup.zsh
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/local_setup.dsv
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/package.dsv
+/home/waves/hexapod/install/hexapod_control/share/ament_index/resource_index/packages/hexapod_control
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/cmake/hexapod_controlConfig.cmake
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/cmake/hexapod_controlConfig-version.cmake
+/home/waves/hexapod/install/hexapod_control/share/hexapod_control/package.xml

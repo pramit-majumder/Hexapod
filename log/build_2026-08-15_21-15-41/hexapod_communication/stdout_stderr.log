@@ -1,0 +1,22 @@
+running egg_info
+writing ../../build/hexapod_communication/hexapod_communication.egg-info/PKG-INFO
+writing dependency_links to ../../build/hexapod_communication/hexapod_communication.egg-info/dependency_links.txt
+writing entry points to ../../build/hexapod_communication/hexapod_communication.egg-info/entry_points.txt
+writing requirements to ../../build/hexapod_communication/hexapod_communication.egg-info/requires.txt
+writing top-level names to ../../build/hexapod_communication/hexapod_communication.egg-info/top_level.txt
+reading manifest file '../../build/hexapod_communication/hexapod_communication.egg-info/SOURCES.txt'
+writing manifest file '../../build/hexapod_communication/hexapod_communication.egg-info/SOURCES.txt'
+running build
+running build_py
+copying hexapod_communication/arduino_comm.py -> /home/waves/hexapod/build/hexapod_communication/build/lib/hexapod_communication
+running install
+running install_lib
+copying /home/waves/hexapod/build/hexapod_communication/build/lib/hexapod_communication/arduino_comm.py -> /home/waves/hexapod/install/hexapod_communication/lib/python3.10/site-packages/hexapod_communication
+byte-compiling /home/waves/hexapod/install/hexapod_communication/lib/python3.10/site-packages/hexapod_communication/arduino_comm.py to arduino_comm.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/waves/hexapod/install/hexapod_communication/lib/python3.10/site-packages/hexapod_communication-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/hexapod_communication/hexapod_communication.egg-info to /home/waves/hexapod/install/hexapod_communication/lib/python3.10/site-packages/hexapod_communication-0.0.0-py3.10.egg-info
+running install_scripts
+Installing communication script to /home/waves/hexapod/install/hexapod_communication/lib/hexapod_communication
+writing list of installed files to '/home/waves/hexapod/build/hexapod_communication/install.log'

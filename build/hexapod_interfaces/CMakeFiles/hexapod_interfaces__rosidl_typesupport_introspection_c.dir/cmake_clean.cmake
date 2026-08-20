@@ -1,0 +1,21 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hexapod_interfaces/msg/detail/coordinates__type_support.c.o"
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hexapod_interfaces/msg/detail/coordinates__type_support.c.o.d"
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hexapod_interfaces/msg/detail/leg_actuators__type_support.c.o"
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hexapod_interfaces/msg/detail/leg_actuators__type_support.c.o.d"
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hexapod_interfaces/srv/detail/inverse_kinematics__type_support.c.o"
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/hexapod_interfaces/srv/detail/inverse_kinematics__type_support.c.o.d"
+  "libhexapod_interfaces__rosidl_typesupport_introspection_c.pdb"
+  "libhexapod_interfaces__rosidl_typesupport_introspection_c.so"
+  "rosidl_typesupport_introspection_c/hexapod_interfaces/msg/detail/coordinates__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/hexapod_interfaces/msg/detail/coordinates__type_support.c"
+  "rosidl_typesupport_introspection_c/hexapod_interfaces/msg/detail/leg_actuators__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/hexapod_interfaces/msg/detail/leg_actuators__type_support.c"
+  "rosidl_typesupport_introspection_c/hexapod_interfaces/srv/detail/inverse_kinematics__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/hexapod_interfaces/srv/detail/inverse_kinematics__type_support.c"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_c.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

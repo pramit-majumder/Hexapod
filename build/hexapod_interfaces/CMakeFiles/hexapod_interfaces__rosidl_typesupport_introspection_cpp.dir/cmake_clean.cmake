@@ -1,0 +1,21 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hexapod_interfaces/msg/detail/coordinates__type_support.cpp.o"
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hexapod_interfaces/msg/detail/coordinates__type_support.cpp.o.d"
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hexapod_interfaces/msg/detail/leg_actuators__type_support.cpp.o"
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hexapod_interfaces/msg/detail/leg_actuators__type_support.cpp.o.d"
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hexapod_interfaces/srv/detail/inverse_kinematics__type_support.cpp.o"
+  "CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/hexapod_interfaces/srv/detail/inverse_kinematics__type_support.cpp.o.d"
+  "libhexapod_interfaces__rosidl_typesupport_introspection_cpp.pdb"
+  "libhexapod_interfaces__rosidl_typesupport_introspection_cpp.so"
+  "rosidl_typesupport_introspection_cpp/hexapod_interfaces/msg/detail/coordinates__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/hexapod_interfaces/msg/detail/coordinates__type_support.cpp"
+  "rosidl_typesupport_introspection_cpp/hexapod_interfaces/msg/detail/leg_actuators__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/hexapod_interfaces/msg/detail/leg_actuators__type_support.cpp"
+  "rosidl_typesupport_introspection_cpp/hexapod_interfaces/srv/detail/inverse_kinematics__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/hexapod_interfaces/srv/detail/inverse_kinematics__type_support.cpp"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/hexapod_interfaces__rosidl_typesupport_introspection_cpp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

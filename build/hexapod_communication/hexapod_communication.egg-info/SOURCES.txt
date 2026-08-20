@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+../../build/hexapod_communication/hexapod_communication.egg-info/PKG-INFO
+../../build/hexapod_communication/hexapod_communication.egg-info/SOURCES.txt
+../../build/hexapod_communication/hexapod_communication.egg-info/dependency_links.txt
+../../build/hexapod_communication/hexapod_communication.egg-info/entry_points.txt
+../../build/hexapod_communication/hexapod_communication.egg-info/requires.txt
+../../build/hexapod_communication/hexapod_communication.egg-info/top_level.txt
+../../build/hexapod_communication/hexapod_communication.egg-info/zip-safe
+hexapod_communication/__init__.py
+hexapod_communication/arduino_comm.py
+resource/hexapod_communication
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

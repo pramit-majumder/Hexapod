@@ -1,0 +1,8 @@
+msg/Coordinates.idl
+msg/Coordinates.msg
+msg/LegActuators.idl
+msg/LegActuators.msg
+srv/InverseKinematics.idl
+srv/InverseKinematics.srv
+srv/InverseKinematics_Request.msg
+srv/InverseKinematics_Response.msg

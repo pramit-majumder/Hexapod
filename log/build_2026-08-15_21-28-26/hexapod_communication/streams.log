@@ -1,0 +1,21 @@
+[3.190s] Invoking command in '/home/waves/hexapod/src/hexapod_communication': PYTHONPATH=/home/waves/hexapod/build/hexapod_communication/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/waves/hexapod/install/hexapod_communication/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/hexapod_communication build --build-base /home/waves/hexapod/build/hexapod_communication/build install --record /home/waves/hexapod/build/hexapod_communication/install.log --single-version-externally-managed install_data
+[4.348s] running egg_info
+[4.350s] writing ../../build/hexapod_communication/hexapod_communication.egg-info/PKG-INFO
+[4.350s] writing dependency_links to ../../build/hexapod_communication/hexapod_communication.egg-info/dependency_links.txt
+[4.351s] writing entry points to ../../build/hexapod_communication/hexapod_communication.egg-info/entry_points.txt
+[4.351s] writing requirements to ../../build/hexapod_communication/hexapod_communication.egg-info/requires.txt
+[4.353s] writing top-level names to ../../build/hexapod_communication/hexapod_communication.egg-info/top_level.txt
+[4.358s] reading manifest file '../../build/hexapod_communication/hexapod_communication.egg-info/SOURCES.txt'
+[4.360s] writing manifest file '../../build/hexapod_communication/hexapod_communication.egg-info/SOURCES.txt'
+[4.361s] running build
+[4.362s] running build_py
+[4.362s] running install
+[4.365s] running install_lib
+[4.373s] running install_data
+[4.373s] running install_egg_info
+[4.393s] removing '/home/waves/hexapod/install/hexapod_communication/lib/python3.10/site-packages/hexapod_communication-0.0.0-py3.10.egg-info' (and everything under it)
+[4.394s] Copying ../../build/hexapod_communication/hexapod_communication.egg-info to /home/waves/hexapod/install/hexapod_communication/lib/python3.10/site-packages/hexapod_communication-0.0.0-py3.10.egg-info
+[4.396s] running install_scripts
+[4.487s] Installing communication script to /home/waves/hexapod/install/hexapod_communication/lib/hexapod_communication
+[4.488s] writing list of installed files to '/home/waves/hexapod/build/hexapod_communication/install.log'
+[4.535s] Invoked command in '/home/waves/hexapod/src/hexapod_communication' returned '0': PYTHONPATH=/home/waves/hexapod/build/hexapod_communication/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/waves/hexapod/install/hexapod_communication/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/hexapod_communication build --build-base /home/waves/hexapod/build/hexapod_communication/build install --record /home/waves/hexapod/build/hexapod_communication/install.log --single-version-externally-managed install_data

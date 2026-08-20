@@ -1,0 +1,16 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hexapod_interfaces/msg/Coordinates.msg
+// generated code does not contain a copyright notice
+
+
+module hexapod_interfaces {
+  module msg {
+    struct Coordinates {
+      float x;
+
+      float y;
+
+      float z;
+    };
+  };
+};
