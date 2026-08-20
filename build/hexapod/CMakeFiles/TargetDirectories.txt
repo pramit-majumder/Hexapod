@@ -1,9 +1,0 @@
-/home/waves/hexapod/build/hexapod/CMakeFiles/uninstall.dir
-/home/waves/hexapod/build/hexapod/CMakeFiles/hexapod_uninstall.dir
-/home/waves/hexapod/build/hexapod/CMakeFiles/test.dir
-/home/waves/hexapod/build/hexapod/CMakeFiles/edit_cache.dir
-/home/waves/hexapod/build/hexapod/CMakeFiles/rebuild_cache.dir
-/home/waves/hexapod/build/hexapod/CMakeFiles/list_install_components.dir
-/home/waves/hexapod/build/hexapod/CMakeFiles/install.dir
-/home/waves/hexapod/build/hexapod/CMakeFiles/install/local.dir
-/home/waves/hexapod/build/hexapod/CMakeFiles/install/strip.dir

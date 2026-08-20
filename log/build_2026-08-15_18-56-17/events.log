@@ -1,9 +1,0 @@
-[0.000000] (-) TimerEvent: {}
-[0.000301] (-) JobUnselected: {'identifier': 'hexapod_communication'}
-[0.000338] (-) JobUnselected: {'identifier': 'hexapod_interfaces'}
-[0.000358] (-) JobUnselected: {'identifier': 'hexapod_services'}
-[0.000380] (hexapod_control) JobQueued: {'identifier': 'hexapod_control', 'dependencies': OrderedDict([('hexapod_interfaces', '/home/waves/hexapod/install/hexapod_interfaces')])}
-[0.000497] (hexapod_control) JobStarted: {'identifier': 'hexapod_control'}
-[0.096455] (-) TimerEvent: {}
-[0.118149] (hexapod_control) JobEnded: {'identifier': 'hexapod_control', 'rc': 1}
-[0.136721] (-) EventReactorShutdown: {}

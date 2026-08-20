@@ -1,3 +1,0 @@
-[console_scripts]
-communication = hexapod_communication.arduino_comm:main
-
