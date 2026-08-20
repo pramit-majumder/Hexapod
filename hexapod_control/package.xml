@@ -4,7 +4,7 @@
   <name>hexapod_control</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="waves@todo.todo">waves</maintainer>
+  <maintainer email="pramitmajumder404@gmail.com">Pramit Majumder</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
