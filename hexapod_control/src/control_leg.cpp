@@ -16,7 +16,10 @@ class control_leg : public rclcpp::Node
             coords = this->create_subscription<hexapod_interfaces::msg::Coordinates>("coords", 10, std::bind(&control_leg::traverse, this, std::placeholders::_1));
             x = 0.00;
             y = 0.00;
-            z = 0.00;            
+            z = 0.00;   
+            coxa = 90;
+            femur = 90;
+            tibia = 90;
         }
     private:
         struct Point3d {
@@ -35,26 +38,32 @@ class control_leg : public rclcpp::Node
         }
         
         void traverse(const hexapod_interfaces::msg::Coordinates::SharedPtr msg){
-            Point3d start = {this->x, this->y, this->z};
-            Point3d end = {msg->x, msg->y, msg->z};
 
+            
+            Point3d start = {this->coxa, this->femur, this->tibia};
+            Point3d end = solver(msg->x, msg->y, msg->z);
+            RCLCPP_INFO(this->get_logger(), "Interpolating from (%f, %f, %f) to (%f, %f, %f)", start.x, start.y, start.z, end.x, end.y, end.z);
+            auto angles = hexapod_interfaces::msg::LegActuators();
             for(int i = 0; i <= 50; i++){
 
                 float s = (float)i/50.0f;
                 this->result = lerp(start, end, s);
-                solver(result.x, result.y, result.z);
-                RCLCPP_INFO(this->get_logger(), "X: %f", this->result.x);
-                RCLCPP_INFO(this->get_logger(), "Y: %f", this->result.y);
-                RCLCPP_INFO(this->get_logger(), "Z: %f", this->result.z);
-                RCLCPP_INFO(this->get_logger(), "");
                 
-            }
+                // RCLCPP_INFO(this->get_logger(), "X: %f", this->result.x);
+                // RCLCPP_INFO(this->get_logger(), "Y: %f", this->result.y);
+                // RCLCPP_INFO(this->get_logger(), "Z: %f", this->result.z);
+                // RCLCPP_INFO(this->get_logger(), "");
+                
+                angles.coxa = result.x;
+                angles.femur = result.y;
+                angles.tibia = result.z;
 
+                this->leg->publish(angles);  
+                std::this_thread::sleep_for( std::chrono::milliseconds(20) ); 
+            }
         }
 
-        void solver(float _x, float _y, float _z){
-
-            auto angles = hexapod_interfaces::msg::LegActuators();  
+        Point3d solver(float _x, float _y, float _z){  
             
             double a = this->femur_l;
             double b = this->tibia_l;
@@ -90,22 +99,30 @@ class control_leg : public rclcpp::Node
             float delta = (atan2(-_x, _y) * 180/3.14);
             RCLCPP_INFO(this->get_logger(), "Delta: %f", delta);
 
-            angles.coxa = abs(90 - delta);
-            angles.femur = abs(alpha + beta);
-            angles.tibia = abs(180 - gamma);
-            this->leg->publish(angles);
+            Point3d angles;
 
+            angles.x = abs(90 - delta);
+            angles.y = abs(alpha + beta);
+            angles.z = abs(180 - gamma);
+
+            this->coxa = angles.x;
+            this->femur = angles.y;
+            this->tibia = angles.z;
+
+            return angles;
         }
 
     rclcpp::TimerBase::SharedPtr timer;
     int counter;
     float x, y, z;
+    float coxa, femur, tibia;
     int coxa_l = 50;
     int femur_l = 75;
     int tibia_l = 110.71389;
     Point3d result;
     rclcpp::Publisher<hexapod_interfaces::msg::LegActuators>::SharedPtr leg;
     rclcpp::Subscription<hexapod_interfaces::msg::Coordinates>::SharedPtr coords;
+    
 };
 
 
