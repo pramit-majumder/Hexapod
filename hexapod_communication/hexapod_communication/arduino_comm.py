@@ -13,7 +13,7 @@ class ArduinoDriverNode(Node):
         self.sub = self.create_subscription(LegActuators, "leg", self.move_leg, 10)
 
     def move_leg(self, msg):
-        cmd = str(int(msg.coxa)) + ";" + str(int(msg.femur)) + ";" + str(int(msg.tibia))
+        cmd = str(int(msg.coxa)) + ";" + str(int(msg.femur)) + ";" + str(int(msg.tibia)) + "\n"
         self.ser_.write(cmd.encode('utf-8'))
         self.get_logger().info(cmd)
 
