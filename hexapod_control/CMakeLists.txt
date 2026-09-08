@@ -12,12 +12,12 @@ find_package(rclcpp REQUIRED)
 add_executable(controller src/control_leg.cpp)
 ament_target_dependencies(controller rclcpp hexapod_interfaces)
 
-add_executable(generate_angles src/generate_angles.cpp)
-ament_target_dependencies(generate_angles rclcpp hexapod_interfaces)
+add_executable(waypoints src/generate_waypoints.cpp)
+ament_target_dependencies(waypoints rclcpp hexapod_interfaces)
 
 install(TARGETS
   controller
-  generate_angles
+  waypoints
 
   DESTINATION lib/${PROJECT_NAME}
 )

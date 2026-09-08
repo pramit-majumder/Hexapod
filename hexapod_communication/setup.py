@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "communication = hexapod_communication.arduino_comm:main"
+            "communication = hexapod_communication.arduino_comm:main",
+            "non_arduino_comm = hexapod_communication.comm:main"
         ],
     },
 )
