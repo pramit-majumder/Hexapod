@@ -81,11 +81,10 @@ class control_leg : public rclcpp::Node
             this->coxa = 90 - delta;
             this->femur = std::clamp(std::abs(alpha + beta + 90), 0.0f, 180.0f);
             this->tibia = std::clamp(std::abs(gamma), 0.0f, 180.0f);
-            
-            RCLCPP_INFO(this->get_logger(), "Coxa, Femur, Tibia: %f, %f, %f", this->coxa, this->femur, this->tibia);
-            
+            this->end = {this->coxa, this->femur, this->tibia};
             target_reached = false;
             RCLCPP_INFO(this->get_logger(), "Started Interpolating at %d samples and at %d Time", this->sampling, this->milliss);
+            RCLCPP_INFO(this->get_logger(), "Coxa, Femur, Tibia: %f, %f, %f", this->coxa, this->femur, this->tibia);
             time = 0;
         }
 
