@@ -1,4 +1,16 @@
-Write all 18 dofs
-Calculate the time it takes to calculate 18dofs
-Use a Feed forward neural network for 18 dofs(Use PyTorch)
-Read the NASA TECHNICAL DOCUMENT
+# Hexapod Neural Network Tasks
+
+* [ ] Define all 18 DOFs: 6 legs × 3 joints
+* [ ] Define complete joint/DOF naming
+* [ ] Define the 18-joint state/action representation
+* [ ] Define computational time measurement methodology
+* [ ] Implement a Feed-Forward Neural Network for all 18 DOFs using PyTorch
+* [ ] Define the neural-network input/output design
+* [ ] Calculate the computational time required to calculate all 18 DOFs
+* [ ] Compare the neural-network approach against analytical IK/control where appropriate
+* [ ] Read and analyze the NASA technical document
+* [ ] Discuss how the NASA technical document relates to the proposed approach
+* [ ] Define the experimental methodology
+* [ ] Record and present experimental results
+* [ ] Prepare a results table
+* [ ] Add references
