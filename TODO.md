@@ -3,6 +3,7 @@
 * [ ] Define all 18 DOFs: 6 legs × 3 joints
 * [ ] Define complete joint/DOF naming
 * [ ] Define the 18-joint state/action representation
+* [ ] USE MATLAB FOR GRAPHS FOR TRAJECTORY GENERATION
 * [ ] Define computational time measurement methodology
 * [ ] Implement a Feed-Forward Neural Network for all 18 DOFs using PyTorch
 * [ ] Define the neural-network input/output design
