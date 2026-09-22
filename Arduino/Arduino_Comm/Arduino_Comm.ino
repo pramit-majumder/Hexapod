@@ -1,43 +1,35 @@
-O#include <Servo.h>
+#include <Wire.h>
 
-Servo coxaServo1;
-Servo femurServo1;
-Servo tibiaServo1;
+#include <Adafruit_PWMServoDriver.h>
 
-Servo coxaServo2;
-Servo femurServo2;
-Servo tibiaServo2;
+Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40);
 
-Servo coxaServo3;
-Servo femurServo3;
-Servo tibiaServo3;
+#define SERVOMIN 150
 
-const int coxaPin1  = 8;
-const int femurPin1 = 9;
-const int tibiaPin1 = 10;
+#define SERVOMAX 600
 
-// const int coxaPin2  = 11;
-// const int femurPin2 = 12;
-// const int tibiaPin2 = 13;
+void setServoAngle(uint8_t channel, int angle) {
 
-// const int coxaPin3  = 9;
-// const int femurPin3 = 10;
-// const int tibiaPin3 = 11;
+  angle = constrain(angle, 0, 180);
+
+  int pulse = map(angle, 0, 180, SERVOMIN, SERVOMAX);
+
+  pwm.setPWM(channel, 0, pulse);
+
+}
 
 void setup() {
   Serial.begin(115200);
 
-  coxaServo1.attach(coxaPin1);
-  femurServo1.attach(femurPin1);
-  tibiaServo1.attach(tibiaPin1);
+  Wire.begin();
 
-  // coxaServo2.attach(coxaPin2);
-  // femurServo2.attach(femurPin2);
-  // tibiaServo2.attach(tibiaPin2);
+  pwm.begin();
 
-  // coxaServo3.attach(coxaPin3);
-  // femurServo3.attach(femurPin3);
-  // tibiaServo3.attach(tibiaPin3);
+  pwm.setOscillatorFrequency(27000000);
+
+  pwm.setPWMFreq(50);
+
+  delay(500);
 
   while (!Serial) {}
   while (Serial.available() > 0) {
@@ -70,16 +62,24 @@ void loop() {
     int tibiaVal = constrain(tibiaStr.toInt(), 0, 180);
     tibiaVal = map(tibiaVal, 0, 180, 180, 0);
  
-    coxaServo1.write(coxaVal);
-    femurServo1.write(femurVal);
-    tibiaServo1.write(tibiaVal);
 
-    // coxaServo2.write(coxaVal);
-    // femurServo2.write(femurVal);
-    // tibiaServo2.write(tibiaVal);
+    setServoAngle(0, coxaVal);
+    setServoAngle(1, femurVal);
+    setServoAngle(2, tibiaVal);
+
+    setServoAngle(5, map(coxaVal, 0, 180, 180, 0));
+    setServoAngle(4, femurVal);
+    setServoAngle(3, constrain(tibiaVal + 20, 0, 180));
+
+    setServoAngle(8, coxaVal);
+    setServoAngle(7, femurVal);
+    setServoAngle(6, tibiaVal);
+
+    setServoAngle(9, coxaVal);
+    setServoAngle(10, femurVal);
+    setServoAngle(11, tibiaVal);
     
     digitalWrite(LED_BUILTIN, LOW);
   }
 }
 
-convert this code into pca code for the arduino mega

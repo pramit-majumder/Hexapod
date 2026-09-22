@@ -13,13 +13,14 @@ class ArduinoDriverNode(Node):
         self.sub = self.create_subscription(LegActuators, "leg", self.move_leg, 10)
 
     def move_leg(self, msg):
+        # Send the data through Coxa_deg;Femur_deg;Tibia_deg
         cmd = str(int(msg.coxa)) + ";" + str(int(msg.femur)) + ";" + str(int(msg.tibia)) + "\n"
         self.ser_.write(cmd.encode('utf-8'))
         self.get_logger().info(cmd)
 
 
 def main(args=None):
-    # Init serial
+    # Connect with ACM0, Else try to connect with ACM1 
     ser = None
     while True:
         try:
@@ -29,8 +30,15 @@ def main(args=None):
             ser.reset_input_buffer()
             break
         except serial.SerialException:
-            print("Could not connect to Serial. Retrying in 1 second...")
-            time.sleep(1)
+            try:
+                ser = serial.Serial('/dev/ttyACM1', 115200, timeout=1.0)
+                print("Successfully connected to Serial.")
+                time.sleep(1)
+                ser.reset_input_buffer()
+                break
+            except serial.SerialException:
+                print("Could not connect to Serial. Retrying in 1 second...")
+                time.sleep(1)
 
     rclpy.init(args=args)
     node = ArduinoDriverNode(ser)
