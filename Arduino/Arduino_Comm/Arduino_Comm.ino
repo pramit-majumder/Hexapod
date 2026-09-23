@@ -2,6 +2,12 @@
 
 #include <Adafruit_PWMServoDriver.h>
 
+#include <Servo.h>
+
+Servo servo1;
+Servo servo2;
+Servo servo3;
+
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40);
 
 #define SERVOMIN 150
@@ -35,6 +41,9 @@ void setup() {
   while (Serial.available() > 0) {
     Serial.read();
   }
+  servo1.attach(9);
+  servo2.attach(10);
+  servo3.attach(11);
 
   pinMode(LED_BUILTIN, OUTPUT);
 }
@@ -63,23 +72,31 @@ void loop() {
     tibiaVal = map(tibiaVal, 0, 180, 180, 0);
  
 
-    setServoAngle(0, coxaVal);
-    setServoAngle(1, femurVal);
-    setServoAngle(2, tibiaVal);
+    // setServoAngle(0, coxaVal);
+    // setServoAngle(1, femurVal);
+    // setServoAngle(2, tibiaVal);
 
-    setServoAngle(5, map(coxaVal, 0, 180, 180, 0));
-    setServoAngle(4, femurVal);
-    setServoAngle(3, constrain(tibiaVal + 20, 0, 180));
+    // setServoAngle(5, coxaVal);
+    // setServoAngle(4, femurVal);
+    // setServoAngle(3, constrain(tibiaVal + 20, 0, 180));
 
-    setServoAngle(8, coxaVal);
-    setServoAngle(7, femurVal);
-    setServoAngle(6, tibiaVal);
+    // setServoAngle(6, coxaVal);
+    // setServoAngle(7, femurVal);
+    // setServoAngle(8, tibiaVal);
 
-    setServoAngle(9, coxaVal);
-    setServoAngle(10, femurVal);
-    setServoAngle(11, tibiaVal);
+    // setServoAngle(9, coxaVal);
+    // setServoAngle(10, femurVal);
+    // setServoAngle(11, tibiaVal);
+
+    setServoAngle(12, coxaVal);
+    setServoAngle(13, femurVal);
+    setServoAngle(14, tibiaVal);
+
+    servo1.write(coxaVal);
+    servo2.write(femurVal);
+    servo3.write(tibiaVal);
     
-    digitalWrite(LED_BUILTIN, LOW);
+    // digitalWrite(LED_BUILTIN, LOW);
   }
 }
 
