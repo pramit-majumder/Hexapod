@@ -1,0 +1,1990 @@
+<?xml version="1.0" ?>
+<robot name="physical_hexapod" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find physical_hexapod_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find physical_hexapod_description)/urdf/physical_hexapod.trans" />
+<xacro:include filename="$(find physical_hexapod_description)/urdf/physical_hexapod.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.01959153923077635 -0.0073541963517954455 0.004828217632482431" rpy="0 0 0"/>
+    <mass value="0.1475809399441347"/>
+    <inertia ixx="0.000565" iyy="0.000811" izz="0.000319" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="CoxaServo_1">
+  <inertial>
+    <origin xyz="-0.022513332321356744 -0.012663831208089036 -0.015397869399309622" rpy="0 0 0"/>
+    <mass value="0.10804632454892661"/>
+    <inertia ixx="3.9e-05" iyy="5e-05" izz="3.8e-05" ixy="-1e-06" iyz="-1e-06" ixz="-1.4e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.063135 -0.009761 0.081306" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.063135 -0.009761 0.081306" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor_1">
+  <inertial>
+    <origin xyz="0.020236151941974603 -0.007698893617997832 0.013646337880529824" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="5.8e-05" iyy="4.3e-05" izz="5.8e-05" ixy="2e-06" iyz="2e-06" ixz="-1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.109315 -0.017257 0.113649" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.109315 -0.017257 0.113649" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__1__1">
+  <inertial>
+    <origin xyz="-0.027250766281048625 -0.0112547547595295 0.1250191060400646" rpy="0 0 0"/>
+    <mass value="0.08208392786171566"/>
+    <inertia ixx="4.6e-05" iyy="1.8e-05" izz="4.6e-05" ixy="-9e-06" iyz="-8e-06" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.079606 -0.031615 0.242804" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.079606 -0.031615 0.242804" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder_1">
+  <inertial>
+    <origin xyz="-0.012125301979133307 0.008231174587384297 -0.0034857255885452215" rpy="0 0 0"/>
+    <mass value="0.08208392786171564"/>
+    <inertia ixx="1.8e-05" iyy="5e-05" izz="4.2e-05" ixy="-0.0" iyz="-0.0" ixz="1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.120649 0.001995 0.119525" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.120649 0.001995 0.119525" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder_1">
+  <inertial>
+    <origin xyz="0.007704371922184275 -4.855567701522734e-07 0.01605524288896444" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="2e-06" iyy="5e-06" izz="3e-06" ixy="0.0" iyz="-0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.107102 0.023896 0.126621" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.107102 0.023896 0.126621" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__1__1">
+  <inertial>
+    <origin xyz="-0.012047353057940913 0.006287748273405135 -0.01150935391181987" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="3e-06" ixy="0.0" iyz="0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.097662 -1.6e-05 0.150673" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.097662 -1.6e-05 0.150673" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__3__1">
+  <inertial>
+    <origin xyz="0.02969436147498436 -0.0060846115242419235 0.1948052067310069" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.7e-05" iyy="7.1e-05" izz="4.1e-05" ixy="-0.0" iyz="0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.173189 -0.012601 0.342996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.173189 -0.012601 0.342996" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Femur_1">
+  <inertial>
+    <origin xyz="-0.02473141214941163 0.004669975866199815 -0.050033397948334196" rpy="0 0 0"/>
+    <mass value="0.18517326458962144"/>
+    <inertia ixx="0.000117" iyy="0.000203" izz="0.000124" ixy="0.0" iyz="0.0" ixz="-7.9e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.131654 -0.00167 0.125956" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.131654 -0.00167 0.125956" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__1__1">
+  <inertial>
+    <origin xyz="0.022614741205250782 0.00485314778936443 0.010956371732594894" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.1e-05" iyy="7.1e-05" izz="4.7e-05" ixy="0.0" iyz="-0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.207497 -0.001357 0.198408" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.207497 -0.001357 0.198408" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Triangle_1">
+  <inertial>
+    <origin xyz="0.023495893839868554 -0.007808520493486633 -0.018653607404226474" rpy="0 0 0"/>
+    <mass value="0.11021612920690807"/>
+    <inertia ixx="3.9e-05" iyy="3.6e-05" izz="3.8e-05" ixy="-0.0" iyz="-0.0" ixz="1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.212423 0.057497 0.178756" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.212423 0.057497 0.178756" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_LSide_Final__1">
+  <inertial>
+    <origin xyz="-0.0017126560365198495 0.045291009751985634 -0.0029729026942214576" rpy="0 0 0"/>
+    <mass value="0.14990505403636886"/>
+    <inertia ixx="0.000183" iyy="1.2e-05" izz="0.000183" ixy="-1e-06" iyz="-1e-06" ixz="-6e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.165272 0.057539 0.216034" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_Final__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.165272 0.057539 0.216034" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_Final__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_Final__1">
+  <inertial>
+    <origin xyz="0.0020794885211026792 -0.024142922595412723 -0.0024957185081625755" rpy="0 0 0"/>
+    <mass value="0.1628974192594201"/>
+    <inertia ixx="0.000205" iyy="3.3e-05" izz="0.000204" ixy="9e-06" iyz="-1.2e-05" ixz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.209487 -0.006284 0.175623" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_Final__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.209487 -0.006284 0.175623" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_Final__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="CoxaServo__1__1">
+  <inertial>
+    <origin xyz="0.015031340402115165 -0.012663831208089064 -0.022759395411806743" rpy="0 0 0"/>
+    <mass value="0.10804632454892661"/>
+    <inertia ixx="3.9e-05" iyy="5e-05" izz="3.9e-05" ixy="1e-06" iyz="-1e-06" ixz="1.4e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.031436 -0.009761 0.073942" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.031436 -0.009761 0.073942" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__4__1">
+  <inertial>
+    <origin xyz="-0.020231945874321103 -0.007898893617997895 0.01365155000345196" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="5.8e-05" iyy="4.3e-05" izz="5.8e-05" ixy="-2e-06" iyz="2e-06" ixz="1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.069909 -0.017257 0.113869" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.069909 -0.017257 0.113869" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__1___1__1">
+  <inertial>
+    <origin xyz="0.011035784575921262 -0.015746754759529916 -0.01092127879531532" rpy="0 0 0"/>
+    <mass value="0.08208392786171566"/>
+    <inertia ixx="4.6e-05" iyy="1.8e-05" izz="4.6e-05" ixy="9e-06" iyz="-9e-06" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.056477 -0.034907 0.107023" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.056477 -0.034907 0.107023" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__2__1">
+  <inertial>
+    <origin xyz="-0.007204304463187733 -4.855567706865682e-07 0.016285993521385655" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="3e-06" iyy="5e-06" izz="2e-06" ixy="0.0" iyz="0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.067442 0.025096 0.126826" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.067442 0.025096 0.126826" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__1___1__1">
+  <inertial>
+    <origin xyz="0.011685550377638632 -0.006212251726592695 -0.011876477703747446" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="3e-06" ixy="-0.0" iyz="0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.100262 -0.011316 0.108264" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.100262 -0.011316 0.108264" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__2__1">
+  <inertial>
+    <origin xyz="-0.008096962153329432 0.008231174587384114 -0.02364476064094448" rpy="0 0 0"/>
+    <mass value="0.08208392786171564"/>
+    <inertia ixx="4.2e-05" iyy="5e-05" izz="1.8e-05" ixy="0.0" iyz="-0.0" ixz="-1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.081218 0.003195 0.120137" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.081218 0.003195 0.120137" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__3___1__1">
+  <inertial>
+    <origin xyz="0.024958976274668046 7.438847575781844e-05 0.011061798315041144" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.1e-05" iyy="7.1e-05" izz="4.7e-05" ixy="-0.0" iyz="-0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.072785 -0.005242 0.165892" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.072785 -0.005242 0.165892" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Femur__1__1">
+  <inertial>
+    <origin xyz="0.05039359654514279 -0.004983439601077954 -0.023988504416483675" rpy="0 0 0"/>
+    <mass value="0.18517326458962144"/>
+    <inertia ixx="0.000122" iyy="0.000203" izz="0.000119" ixy="-0.0" iyz="0.0" ixz="7.9e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.075479 -0.01017 0.14318" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.075479 -0.01017 0.14318" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__1___1__1">
+  <inertial>
+    <origin xyz="-0.011289317108707259 0.004852732322045017 0.022450141830220954" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.7e-05" iyy="7.1e-05" izz="4.1e-05" ixy="0.0" iyz="0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.149044 -0.000204 0.217943" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.149044 -0.000204 0.217943" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1___1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_wtf_1_1">
+  <inertial>
+    <origin xyz="0.002464655533831267 -0.024143338062732212 0.0021164331105320566" rpy="0 0 0"/>
+    <mass value="0.1628974192594201"/>
+    <inertia ixx="0.000204" iyy="3.3e-05" izz="0.000205" ixy="1.2e-05" iyz="9e-06" ixz="-5e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.126291 -0.005131 0.22027" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_wtf_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.126291 -0.005131 0.22027" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_wtf_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="CoxaServo__2__1">
+  <inertial>
+    <origin xyz="-0.022515846620965035 -0.012663831208089667 0.01539532154428086" rpy="0 0 0"/>
+    <mass value="0.10804632454892661"/>
+    <inertia ixx="3.9e-05" iyy="5e-05" izz="3.9e-05" ixy="-1e-06" iyz="1e-06" ixz="1.4e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.063135 -0.009761 -0.090961" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.063135 -0.009761 -0.090961" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__5__1">
+  <inertial>
+    <origin xyz="0.020232439655471224 -0.007698893617998456 -0.013651623870977778" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="5.8e-05" iyy="4.3e-05" izz="5.8e-05" ixy="2e-06" iyz="-2e-06" ixz="1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.109093 -0.017257 -0.123524" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.109093 -0.017257 -0.123524" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__3__1">
+  <inertial>
+    <origin xyz="-0.011035290794771321 -0.01574675475952898 0.01092120492778953" rpy="0 0 0"/>
+    <mass value="0.08208392786171564"/>
+    <inertia ixx="4.6e-05" iyy="1.8e-05" izz="4.6e-05" ixy="-9e-06" iyz="9e-06" ixz="4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.095661 -0.035107 -0.116678" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.095661 -0.035107 -0.116678" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__1___2__1">
+  <inertial>
+    <origin xyz="0.007203798244337006 -4.855567659022009e-07 -0.01628606738890942" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="3e-06" iyy="5e-06" izz="2e-06" ixy="0.0" iyz="-0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.106625 0.024896 -0.136481" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.106625 0.024896 -0.136481" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__1___2__1">
+  <inertial>
+    <origin xyz="-0.003664544065519401 -0.008268825412614133 0.012071686773418355" rpy="0 0 0"/>
+    <mass value="0.08208392786171566"/>
+    <inertia ixx="4.2e-05" iyy="5e-05" izz="1.8e-05" ixy="-0.0" iyz="0.0" ixz="-1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.10864 -0.013505 -0.141365" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.10864 -0.013505 -0.141365" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Femur__2__1">
+  <inertial>
+    <origin xyz="-0.04896874528828135 -0.0049834396011195605 0.0253920739346917" rpy="0 0 0"/>
+    <mass value="0.18517326458962144"/>
+    <inertia ixx="0.000122" iyy="0.000203" izz="0.000119" ixy="0.0" iyz="-0.0" ixz="7.9e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.115232 -0.01037 -0.152273" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.115232 -0.01037 -0.152273" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__3___2__1">
+  <inertial>
+    <origin xyz="0.011146608774642991 -0.004846852210636634 -0.022590846197805686" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.7e-05" iyy="7.1e-05" izz="4.1e-05" ixy="-0.0" iyz="-0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.187372 -0.010057 -0.22844" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.187372 -0.010057 -0.22844" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_Final___2__1">
+  <inertial>
+    <origin xyz="-0.002465363867895254 -0.024142922595413913 -0.002116137478117508" rpy="0 0 0"/>
+    <mass value="0.1628974192594201"/>
+    <inertia ixx="0.000204" iyy="3.3e-05" izz="0.000205" ixy="-1.2e-05" iyz="-9e-06" ixz="-5e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.164761 -0.005284 -0.230626" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_Final___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.164761 -0.005284 -0.230626" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_Final___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Triangle__2__1">
+  <inertial>
+    <origin xyz="-0.01839762653609814 -0.007704274658385614 -0.023852205058753545" rpy="0 0 0"/>
+    <mass value="0.11021612920690807"/>
+    <inertia ixx="3.8e-05" iyy="3.6e-05" izz="3.9e-05" ixy="-0.0" iyz="0.0" ixz="-1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.167938 0.058497 -0.233516" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.167938 0.058497 -0.233516" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle__2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_LSide_Final___2__1">
+  <inertial>
+    <origin xyz="-0.002320557871883233 0.020602510675193794 -0.0022830672143610287" rpy="0 0 0"/>
+    <mass value="0.14990505403636886"/>
+    <inertia ixx="0.000183" iyy="1.2e-05" izz="0.000183" ixy="-0.0" iyz="-0.0" ixz="6e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.205998 0.033876 -0.190552" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_Final___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.205998 0.033876 -0.190552" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_Final___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="CoxaServo__3__1">
+  <inertial>
+    <origin xyz="0.015028826102506686 -0.012663831208089713 0.0227617955317838" rpy="0 0 0"/>
+    <mass value="0.10804632454892661"/>
+    <inertia ixx="3.9e-05" iyy="5e-05" izz="3.8e-05" ixy="1e-06" iyz="1e-06" ixz="-1.4e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.031436 -0.009761 -0.083597" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.031436 -0.009761 -0.083597" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__6__1">
+  <inertial>
+    <origin xyz="-0.013322452804465756 -0.007898893617998524 -0.020450084718447295" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="5.8e-05" iyy="4.3e-05" izz="5.8e-05" ixy="-2e-06" iyz="-2e-06" ixz="-1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.063251 -0.017257 -0.130075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__6__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.063251 -0.017257 -0.130075" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__6__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__1___3__1">
+  <inertial>
+    <origin xyz="-0.02547619408806323 -0.011054754759530366 0.14066481102985068" rpy="0 0 0"/>
+    <mass value="0.08208392786171566"/>
+    <inertia ixx="4.6e-05" iyy="1.8e-05" izz="4.6e-05" ixy="9e-06" iyz="9e-06" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.092841 -0.031215 0.01292" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.092841 -0.031215 0.01292" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__4__1">
+  <inertial>
+    <origin xyz="0.012011274554798931 -0.008268825412616742 0.0038589081333041397" rpy="0 0 0"/>
+    <mass value="0.08208392786171564"/>
+    <inertia ixx="1.8e-05" iyy="5e-05" izz="4.2e-05" ixy="0.0" iyz="0.0" ixz="1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.081097 -0.014305 -0.129911" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.081097 -0.014305 -0.129911" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__1___3__1">
+  <inertial>
+    <origin xyz="-0.011463674706553448 7.438847575677674e-05 0.02477719163635514" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.7e-05" iyy="7.1e-05" izz="4.1e-05" ixy="0.0" iyz="-0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.115221 -0.006242 -0.133791" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.115221 -0.006242 -0.133791" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__4__1">
+  <inertial>
+    <origin xyz="0.011685578886332607 0.006212711893880996 0.011876267492682252" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="3e-06" ixy="0.0" iyz="0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.057157 0.000184 -0.160333" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.057157 0.000184 -0.160333" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__1___3__1">
+  <inertial>
+    <origin xyz="-0.007257921911456688 -4.855567711965769e-07 -0.01623399307562949" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="2e-06" iyy="5e-06" izz="2e-06" ixy="0.0" iyz="0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.067337 0.024096 -0.136585" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.067337 0.024096 -0.136585" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Femur__3__1">
+  <inertial>
+    <origin xyz="0.023170971230522225 -0.0049834396010789775 0.050775271503858244" rpy="0 0 0"/>
+    <mass value="0.18517326458962144"/>
+    <inertia ixx="0.000122" iyy="0.000203" izz="0.000119" ixy="-0.0" iyz="-0.0" ixz="-7.9e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.092611 -0.01117 -0.135977" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.092611 -0.01117 -0.135977" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__3___3__1">
+  <inertial>
+    <origin xyz="-0.022407968089928565 -0.004846852210637266 -0.011510151878824842" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.1e-05" iyy="7.1e-05" izz="4.7e-05" ixy="-0.0" iyz="0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.166176 -0.010857 -0.210741" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.166176 -0.010857 -0.210741" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_Final___3__1">
+  <inertial>
+    <origin xyz="0.14726301796758412 0.16410307740458543 0.1064978610313484" rpy="0 0 0"/>
+    <mass value="0.1628974192594201"/>
+    <inertia ixx="0.000205" iyy="3.3e-05" izz="0.000204" ixy="-1e-05" iyz="1.2e-05" ixz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.020021 0.182162 -0.0834" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_Final___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.020021 0.182162 -0.0834" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_Final___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Triangle__3__1">
+  <inertial>
+    <origin xyz="-0.02407574414817673 -0.008068275241153236 0.017945156444305166" rpy="0 0 0"/>
+    <mass value="0.11021612920690807"/>
+    <inertia ixx="3.8e-05" iyy="3.6e-05" izz="3.9e-05" ixy="0.0" iyz="0.0" ixz="1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.172278 0.057697 -0.19069" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.172278 0.057697 -0.19069" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_LSide_Final___3__1">
+  <inertial>
+    <origin xyz="-0.003415539927407868 0.03576107409817204 0.0011703039670728776" rpy="0 0 0"/>
+    <mass value="0.14990505403636886"/>
+    <inertia ixx="0.000183" iyy="1.3e-05" izz="0.000183" ixy="5e-06" iyz="5e-06" ixz="-6e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.128802 0.048268 -0.22815" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_Final___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.128802 0.048268 -0.22815" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_Final___3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="CoxaServo__4__1">
+  <inertial>
+    <origin xyz="0.026766087722569887 -0.012663831208089399 0.005252226749647088" rpy="0 0 0"/>
+    <mass value="0.10804632454892661"/>
+    <inertia ixx="2.4e-05" iyy="5e-05" izz="5.3e-05" ixy="1e-06" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.041908 -0.009761 0.000423" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.041908 -0.009761 0.000423" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__7__1">
+  <inertial>
+    <origin xyz="-0.023920480697391888 -0.007898893617998207 0.004852634989380622" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.5e-05" iyy="4.3e-05" izz="7.1e-05" ixy="-3e-06" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.097352 -0.017257 0.000155" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__7__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.097352 -0.017257 0.000155" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__7__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__5__1">
+  <inertial>
+    <origin xyz="-0.01666167248582892 -4.855567705096264e-07 0.006212275191732276" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="2e-06" iyy="5e-06" izz="3e-06" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.104858 0.024096 0.001302" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.104858 0.024096 0.001302" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__1___4__1">
+  <inertial>
+    <origin xyz="0.10882660272126633 -0.011054754759529974 0.005054848877754457" rpy="0 0 0"/>
+    <mass value="0.08208392786171566"/>
+    <inertia ixx="4.2e-05" iyy="1.8e-05" izz="5e-05" ixy="1.2e-05" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.01025 -0.031215 7.7e-05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.01025 -0.031215 7.7e-05" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__3___4__1">
+  <inertial>
+    <origin xyz="-0.02392040883625668 -0.0048468522106366735 0.007698917083139317" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.5e-05" iyy="7.1e-05" izz="4.3e-05" ixy="-0.0" iyz="0.0" ixz="3e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.227039 -0.010857 0.007243" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.227039 -0.010857 0.007243" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__1___4__1">
+  <inertial>
+    <origin xyz="0.009620046339677946 7.438847575739864e-05 0.025548917083139305" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.5e-05" iyy="7.1e-05" izz="4.3e-05" ixy="-0.0" iyz="-0.0" ixz="-3e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.136452 -0.006242 0.024893" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.136452 -0.006242 0.024893" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_Final___4__1">
+  <inertial>
+    <origin xyz="-0.00020093829899839322 -0.024143094218809728 0.003240899474588773" rpy="0 0 0"/>
+    <mass value="0.1628974192594201"/>
+    <inertia ixx="0.00021" iyy="3.3e-05" izz="0.000199" ixy="-1e-06" iyz="1.5e-05" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.212739 -0.006084 0.025093" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_Final___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.212739 -0.006084 0.025093" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_Final___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Triangle__4__1">
+  <inertial>
+    <origin xyz="-0.003970121541466115 -0.007895194899333047 -0.029810910434794342" rpy="0 0 0"/>
+    <mass value="0.11021612920690807"/>
+    <inertia ixx="5.1e-05" iyy="3.6e-05" izz="2.6e-05" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.216762 0.057626 -0.036644" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.216762 0.057626 -0.036644" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_LSide_Final___4__1">
+  <inertial>
+    <origin xyz="-0.0005391256314886406 0.020595172743819293 0.0032443547518437726" rpy="0 0 0"/>
+    <mass value="0.14990505403636886"/>
+    <inertia ixx="0.000177" iyy="1.2e-05" izz="0.000189" ixy="4e-06" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.212413 0.033076 -0.032407" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_Final___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.212413 0.033076 -0.032407" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_Final___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="CoxaServo__5__1">
+  <inertial>
+    <origin xyz="-0.02676559394142 -0.01266383120808934 0.005248699382826746" rpy="0 0 0"/>
+    <mass value="0.10804632454892661"/>
+    <inertia ixx="2.4e-05" iyy="5e-05" izz="5.3e-05" ixy="-1e-06" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.081092 -0.009761 0.000423" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.081092 -0.009761 0.000423" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/CoxaServo__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__3___5__1">
+  <inertial>
+    <origin xyz="0.023920974478541815 -0.0076988936179982325 0.0048468756757745965" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.5e-05" iyy="4.3e-05" izz="7.1e-05" ixy="3e-06" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.136536 -0.017257 -0.000157" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.136536 -0.017257 -0.000157" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__3___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__1___5__1">
+  <inertial>
+    <origin xyz="0.09646089105988362 -0.011254754759529875 -0.0052133382125991445" rpy="0 0 0"/>
+    <mass value="0.08208392786171566"/>
+    <inertia ixx="4.2e-05" iyy="1.8e-05" izz="5e-05" ixy="-1.2e-05" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.234221 -0.031615 -0.009937" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.234221 -0.031615 -0.009937" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__1___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__6__1">
+  <inertial>
+    <origin xyz="0.016661166266978444 -4.855567705477903e-07 0.006287235473423002" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="2e-06" iyy="5e-06" izz="3e-06" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.144041 0.023896 0.001496" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__6__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.144041 0.023896 0.001496" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__6__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__6__1">
+  <inertial>
+    <origin xyz="-0.01117546913986997 -0.008268825412616088 0.005854732440485554" rpy="0 0 0"/>
+    <mass value="0.08208392786171564"/>
+    <inertia ixx="4.2e-05" iyy="5e-05" izz="1.8e-05" ixy="-0.0" iyz="0.0" ixz="1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.148935 -0.014505 -0.012993" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__6__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.148935 -0.014505 -0.012993" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__6__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__1___5__1">
+  <inertial>
+    <origin xyz="-0.009620552558528256 7.438847575774992e-05 -0.02554940641798378" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.5e-05" iyy="7.1e-05" izz="4.3e-05" ixy="0.0" iyz="0.0" ixz="-3e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.175635 -0.006442 -0.034595" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.175635 -0.006442 -0.034595" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__1___5__1">
+  <inertial>
+    <origin xyz="-0.016661744346963242 -0.006287288106116299 1.6432491860285392e-09" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="2e-06" iyy="3e-06" izz="5e-06" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.153829 -0.012516 0.025409" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.153829 -0.012516 0.025409" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Femur__5__1">
+  <inertial>
+    <origin xyz="-0.052443824980518916 0.004669975866241016 -0.019095718231734147" rpy="0 0 0"/>
+    <mass value="0.18517326458962144"/>
+    <inertia ixx="4.1e-05" iyy="0.000203" izz="0.0002" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.161335 -0.00167 -0.016745" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.161335 -0.00167 -0.016745" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__8__1">
+  <inertial>
+    <origin xyz="0.023920902617406453 -0.004846436743317029 -0.00769940641798391" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.5e-05" iyy="7.1e-05" izz="4.3e-05" ixy="0.0" iyz="-0.0" ixz="3e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.266223 -0.01101 -0.016745" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__8__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.266223 -0.01101 -0.016745" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__8__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_Final___5__1">
+  <inertial>
+    <origin xyz="0.0008323643326442198 -0.024130147432975275 -0.003241388809433747" rpy="0 0 0"/>
+    <mass value="0.1628974192594201"/>
+    <inertia ixx="0.00021" iyy="3.4e-05" izz="0.000199" ixy="6e-06" iyz="-1.5e-05" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.251922 -0.006238 -0.034595" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_Final___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.251922 -0.006238 -0.034595" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_Final___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_LSide_Final___5__1">
+  <inertial>
+    <origin xyz="3.0205879658629087e-07 0.020602594394355935 -0.003244844086688757" rpy="0 0 0"/>
+    <mass value="0.14990505403636886"/>
+    <inertia ixx="0.000178" iyy="1.2e-05" izz="0.000189" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.250572 0.032901 0.022905" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_Final___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.250572 0.032901 0.022905" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_Final___5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Triangle__5__1">
+  <inertial>
+    <origin xyz="0.0045035389822788985 -0.009420626349298633 -0.029188014869523392" rpy="0 0 0"/>
+    <mass value="0.11021612920690807"/>
+    <inertia ixx="5.1e-05" iyy="3.6e-05" izz="2.6e-05" ixy="1e-06" iyz="-1e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.253424 0.05767 -0.034357" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.253424 0.05767 -0.034357" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="MG996R_Motor__1___2__1">
+  <inertial>
+    <origin xyz="-0.047211280378299816 -0.005084611524242355 -0.20516224168250755" rpy="0 0 0"/>
+    <mass value="0.2527678180659355"/>
+    <inertia ixx="4.1e-05" iyy="7.1e-05" izz="4.7e-05" ixy="0.0" iyz="0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.090429 -0.010601 -0.368946" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.090429 -0.010601 -0.368946" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/MG996R_Motor__1___2__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Triangle__1__1">
+  <inertial>
+    <origin xyz="0.024059768302392467 -0.008249859720251947 0.017720548057640617" rpy="0 0 0"/>
+    <mass value="0.11021612920690807"/>
+    <inertia ixx="3.8e-05" iyy="3.6e-05" izz="3.9e-05" ixy="0.0" iyz="0.0" ixz="-1.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.12427 0.058718 0.217878" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.12427 0.058718 0.217878" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Triangle__1__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Femur__4__1">
+  <inertial>
+    <origin xyz="0.052444318761668565 -0.004983439601078334 0.01909522889688933" rpy="0 0 0"/>
+    <mass value="0.18517326458962144"/>
+    <inertia ixx="4.1e-05" iyy="0.000203" izz="0.0002" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.122151 -0.01117 0.007243" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.122151 -0.01117 0.007243" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Femur__4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Tibia_LSide_1_1">
+  <inertial>
+    <origin xyz="-0.0030513247033427116 0.04523258023009699 0.002774755059989864" rpy="0 0 0"/>
+    <mass value="0.14990505403636886"/>
+    <inertia ixx="0.000183" iyy="1.2e-05" izz="0.000183" ixy="-1e-06" iyz="-3e-06" ixz="6e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.172552 0.059646 0.182089" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.172552 0.059646 0.182089" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Tibia_LSide_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__1___4__1">
+  <inertial>
+    <origin xyz="0.016661238128113015 -0.006287288106116705 -4.909780938824881e-07" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="2e-06" iyy="3e-06" izz="5e-06" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.114646 -0.012316 -0.035111" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.114646 -0.012316 -0.035111" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__1___4__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Holder__5__1">
+  <inertial>
+    <origin xyz="0.011174962921019757 -0.008268825412616237 -0.022355221775330236" rpy="0 0 0"/>
+    <mass value="0.08208392786171564"/>
+    <inertia ixx="4.2e-05" iyy="5e-05" izz="1.8e-05" ixy="0.0" iyz="-0.0" ixz="1.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.109752 -0.014305 -0.013209" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.109752 -0.014305 -0.013209" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Holder__5__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Bearing_Holder__3__1">
+  <inertial>
+    <origin xyz="-0.011686056596491273 -0.006287288106115652 0.011876403836219462" rpy="0 0 0"/>
+    <mass value="0.03507511571471899"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="3e-06" ixy="-0.0" iyz="0.0" ixz="1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.139445 -0.011516 -0.117919" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.139445 -0.011516 -0.117919" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://physical_hexapod_description/meshes/Bearing_Holder__3__1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rigid 102" type="fixed">
+  <origin xyz="-0.063135 0.009761 -0.081306" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="CoxaServo_1"/>
+</joint>
+
+<joint name="Rigid 103" type="fixed">
+  <origin xyz="-0.04618 0.007496 -0.032343" rpy="0 0 0"/>
+  <parent link="CoxaServo_1"/>
+  <child link="MG996R_Motor_1"/>
+</joint>
+
+<joint name="Revolute 104" type="continuous">
+  <origin xyz="0.029709 0.014358 -0.129155" rpy="0 0 0"/>
+  <parent link="MG996R_Motor_1"/>
+  <child link="Holder__1__1"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid 105" type="fixed">
+  <origin xyz="-0.041043 -0.03361 0.123279" rpy="0 0 0"/>
+  <parent link="Holder__1__1"/>
+  <child link="Holder_1"/>
+</joint>
+
+<joint name="Rigid 106" type="fixed">
+  <origin xyz="-0.027496 -0.055511 0.116183" rpy="0 0 0"/>
+  <parent link="Holder__1__1"/>
+  <child link="Bearing_Holder_1"/>
+</joint>
+
+<joint name="Rigid 107" type="fixed">
+  <origin xyz="0.022987 0.002011 -0.031148" rpy="0 0 0"/>
+  <parent link="Holder_1"/>
+  <child link="Bearing_Holder__1__1"/>
+</joint>
+
+<joint name="Revolute 108" type="continuous">
+  <origin xyz="-0.05254 0.014596 -0.223471" rpy="0 0 0"/>
+  <parent link="Holder_1"/>
+  <child link="MG996R_Motor__3__1"/>
+  <axis xyz="0.69076 -0.0 -0.723084"/>
+</joint>
+
+<joint name="Rigid 109" type="fixed">
+  <origin xyz="0.041535 -0.010931 0.21704" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__3__1"/>
+  <child link="Femur_1"/>
+</joint>
+
+<joint name="Rigid 110" type="fixed">
+  <origin xyz="-0.075843 -0.000313 -0.072452" rpy="0 0 0"/>
+  <parent link="Femur_1"/>
+  <child link="MG996R_Motor__1__1"/>
+</joint>
+
+<joint name="Rigid 111" type="fixed">
+  <origin xyz="-0.002936 -0.063781 -0.003133" rpy="0 0 0"/>
+  <parent link="Tibia_Final__1"/>
+  <child link="Triangle_1"/>
+</joint>
+
+<joint name="Rigid 112" type="fixed">
+  <origin xyz="0.047151 -4.2e-05 -0.037278" rpy="0 0 0"/>
+  <parent link="Triangle_1"/>
+  <child link="Tibia_LSide_Final__1"/>
+</joint>
+
+<joint name="Revolute 113" type="continuous">
+  <origin xyz="-0.00199 0.004927 0.022785" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__1__1"/>
+  <child link="Tibia_Final__1"/>
+  <axis xyz="0.69076 -0.0 -0.723084"/>
+</joint>
+
+<joint name="Rigid 114" type="fixed">
+  <origin xyz="0.031436 0.009761 -0.073942" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="CoxaServo__1__1"/>
+</joint>
+
+<joint name="Rigid 115" type="fixed">
+  <origin xyz="0.038473 0.007496 -0.039927" rpy="0 0 0"/>
+  <parent link="CoxaServo__1__1"/>
+  <child link="MG996R_Motor__4__1"/>
+</joint>
+
+<joint name="Revolute 116" type="continuous">
+  <origin xyz="-0.013432 0.01765 0.006846" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__4__1"/>
+  <child link="Holder__1___1__1"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid 117" type="fixed">
+  <origin xyz="0.010965 -0.060003 -0.019803" rpy="0 0 0"/>
+  <parent link="Holder__1___1__1"/>
+  <child link="Bearing_Holder__2__1"/>
+</joint>
+
+<joint name="Rigid 118" type="fixed">
+  <origin xyz="0.019044 0.014511 0.011873" rpy="0 0 0"/>
+  <parent link="Holder__2__1"/>
+  <child link="Bearing_Holder__1___1__1"/>
+</joint>
+
+<joint name="Rigid 119" type="fixed">
+  <origin xyz="0.024741 -0.038102 -0.013114" rpy="0 0 0"/>
+  <parent link="Holder__1___1__1"/>
+  <child link="Holder__2__1"/>
+</joint>
+
+<joint name="Revolute 120" type="continuous">
+  <origin xyz="-0.008433 0.008437 -0.045755" rpy="0 0 0"/>
+  <parent link="Holder__2__1"/>
+  <child link="MG996R_Motor__3___1__1"/>
+  <axis xyz="0.712798 -0.0 0.701369"/>
+</joint>
+
+<joint name="Rigid 123" type="fixed">
+  <origin xyz="0.002694 0.004928 0.022712" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__3___1__1"/>
+  <child link="Femur__1__1"/>
+</joint>
+
+<joint name="Rigid 124" type="fixed">
+  <origin xyz="0.073565 -0.009966 -0.074763" rpy="0 0 0"/>
+  <parent link="Femur__1__1"/>
+  <child link="MG996R_Motor__1___1__1"/>
+</joint>
+
+<joint name="Revolute 125" type="continuous">
+  <origin xyz="-0.022753 0.004927 -0.002327" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__1___1__1"/>
+  <child link="Tibia_wtf_1_1"/>
+  <axis xyz="0.712798 -0.0 0.701369"/>
+</joint>
+
+<joint name="Rigid 126" type="fixed">
+  <origin xyz="-0.063135 0.009761 0.090961" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="CoxaServo__2__1"/>
+</joint>
+
+<joint name="Rigid 127" type="fixed">
+  <origin xyz="-0.045958 0.007496 0.032563" rpy="0 0 0"/>
+  <parent link="CoxaServo__2__1"/>
+  <child link="MG996R_Motor__5__1"/>
+</joint>
+
+<joint name="Revolute 128" type="continuous">
+  <origin xyz="0.013432 0.01785 -0.006846" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__5__1"/>
+  <child link="Holder__3__1"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid 129" type="fixed">
+  <origin xyz="-0.010964 -0.060003 0.019803" rpy="0 0 0"/>
+  <parent link="Holder__3__1"/>
+  <child link="Bearing_Holder__1___2__1"/>
+</joint>
+
+<joint name="Rigid 130" type="fixed">
+  <origin xyz="-0.012979 -0.021602 0.024687" rpy="0 0 0"/>
+  <parent link="Holder__3__1"/>
+  <child link="Holder__1___2__1"/>
+</joint>
+
+<joint name="Rigid 133" type="fixed">
+  <origin xyz="-0.024803 -0.000231 -0.216673" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__1___2__1"/>
+  <child link="Femur__2__1"/>
+</joint>
+
+<joint name="Rigid 134" type="fixed">
+  <origin xyz="-0.07214 -0.000313 0.076167" rpy="0 0 0"/>
+  <parent link="Femur__2__1"/>
+  <child link="MG996R_Motor__3___2__1"/>
+</joint>
+
+<joint name="Revolute 135" type="continuous">
+  <origin xyz="0.022611 -0.004773 0.002186" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__3___2__1"/>
+  <child link="Tibia_Final___2__1"/>
+  <axis xyz="-0.712798 -0.0 -0.701369"/>
+</joint>
+
+<joint name="Rigid 136" type="fixed">
+  <origin xyz="-0.003177 -0.063781 0.00289" rpy="0 0 0"/>
+  <parent link="Tibia_Final___2__1"/>
+  <child link="Triangle__2__1"/>
+</joint>
+
+<joint name="Rigid 137" type="fixed">
+  <origin xyz="-0.041237 -0.03916 -0.040074" rpy="0 0 0"/>
+  <parent link="Tibia_Final___2__1"/>
+  <child link="Tibia_LSide_Final___2__1"/>
+</joint>
+
+<joint name="Rigid 138" type="fixed">
+  <origin xyz="0.031436 0.009761 0.083597" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="CoxaServo__3__1"/>
+</joint>
+
+<joint name="Rigid 139" type="fixed">
+  <origin xyz="0.031815 0.007496 0.046478" rpy="0 0 0"/>
+  <parent link="CoxaServo__3__1"/>
+  <child link="MG996R_Motor__6__1"/>
+</joint>
+
+<joint name="Revolute 140" type="continuous">
+  <origin xyz="0.02959 0.013958 -0.142995" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__6__1"/>
+  <child link="Holder__1___3__1"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid 141" type="fixed">
+  <origin xyz="-0.011744 -0.01691 0.142831" rpy="0 0 0"/>
+  <parent link="Holder__1___3__1"/>
+  <child link="Holder__4__1"/>
+</joint>
+
+<joint name="Revolute 142" type="continuous">
+  <origin xyz="0.034124 -0.008063 0.00388" rpy="0 0 0"/>
+  <parent link="Holder__4__1"/>
+  <child link="MG996R_Motor__1___3__1"/>
+  <axis xyz="-0.712798 -0.0 0.701369"/>
+</joint>
+
+<joint name="Rigid 143" type="fixed">
+  <origin xyz="-0.02394 -0.014489 0.030422" rpy="0 0 0"/>
+  <parent link="Holder__4__1"/>
+  <child link="Bearing_Holder__4__1"/>
+</joint>
+
+<joint name="Rigid 144" type="fixed">
+  <origin xyz="-0.025504 -0.055311 0.149505" rpy="0 0 0"/>
+  <parent link="Holder__1___3__1"/>
+  <child link="Bearing_Holder__1___3__1"/>
+</joint>
+
+<joint name="Rigid 145" type="fixed">
+  <origin xyz="-0.02261 0.004928 0.002186" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__1___3__1"/>
+  <child link="Femur__3__1"/>
+</joint>
+
+<joint name="Rigid 146" type="fixed">
+  <origin xyz="0.073565 -0.000313 0.074764" rpy="0 0 0"/>
+  <parent link="Femur__3__1"/>
+  <child link="MG996R_Motor__3___3__1"/>
+</joint>
+
+<joint name="Revolute 147" type="continuous">
+  <origin xyz="-0.146155 -0.193019 -0.127341" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__3___3__1"/>
+  <child link="Tibia_Final___3__1"/>
+  <axis xyz="-0.712798 -0.0 0.701369"/>
+</joint>
+
+<joint name="Rigid 148" type="fixed">
+  <origin xyz="0.152257 0.124465 0.10729" rpy="0 0 0"/>
+  <parent link="Tibia_Final___3__1"/>
+  <child link="Triangle__3__1"/>
+</joint>
+
+<joint name="Rigid 149" type="fixed">
+  <origin xyz="0.108781 0.133894 0.14475" rpy="0 0 0"/>
+  <parent link="Tibia_Final___3__1"/>
+  <child link="Tibia_LSide_Final___3__1"/>
+</joint>
+
+<joint name="Rigid 150" type="fixed">
+  <origin xyz="0.041908 0.009761 -0.000423" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="CoxaServo__4__1"/>
+</joint>
+
+<joint name="Rigid 151" type="fixed">
+  <origin xyz="0.055444 0.007496 0.000268" rpy="0 0 0"/>
+  <parent link="CoxaServo__4__1"/>
+  <child link="MG996R_Motor__7__1"/>
+</joint>
+
+<joint name="Rigid 152" type="fixed">
+  <origin xyz="0.115108 -0.055311 -0.001225" rpy="0 0 0"/>
+  <parent link="Holder__1___4__1"/>
+  <child link="Bearing_Holder__5__1"/>
+</joint>
+
+<joint name="Revolute 155" type="continuous">
+  <origin xyz="-0.107602 0.013958 7.8e-05" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__7__1"/>
+  <child link="Holder__1___4__1"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid 157" type="fixed">
+  <origin xyz="0.104888 -0.000313 0.0" rpy="0 0 0"/>
+  <parent link="Femur__4__1"/>
+  <child link="MG996R_Motor__3___4__1"/>
+</joint>
+
+<joint name="Revolute 158" type="continuous">
+  <origin xyz="0.0267 -0.008063 -0.038102" rpy="0 0 0"/>
+  <parent link="Holder__5__1"/>
+  <child link="MG996R_Motor__1___4__1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="Revolute 159" type="continuous">
+  <origin xyz="-0.0143 -0.004773 -0.01785" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__3___4__1"/>
+  <child link="Tibia_Final___4__1"/>
+  <axis xyz="-0.0 -0.0 1.0"/>
+</joint>
+
+<joint name="Rigid 160" type="fixed">
+  <origin xyz="0.004349 -0.02455 0.004237" rpy="0 0 0"/>
+  <parent link="Tibia_LSide_Final___4__1"/>
+  <child link="Triangle__4__1"/>
+</joint>
+
+<joint name="Rigid 161" type="fixed">
+  <origin xyz="-0.000326 -0.03916 0.0575" rpy="0 0 0"/>
+  <parent link="Tibia_Final___4__1"/>
+  <child link="Tibia_LSide_Final___4__1"/>
+</joint>
+
+<joint name="Rigid 162" type="fixed">
+  <origin xyz="-0.081092 0.009761 -0.000423" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="CoxaServo__5__1"/>
+</joint>
+
+<joint name="Rigid 163" type="fixed">
+  <origin xyz="-0.055444 0.007496 0.00058" rpy="0 0 0"/>
+  <parent link="CoxaServo__5__1"/>
+  <child link="MG996R_Motor__3___5__1"/>
+</joint>
+
+<joint name="Revolute 164" type="continuous">
+  <origin xyz="-0.097685 0.014358 0.00978" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__3___5__1"/>
+  <child link="Holder__1___5__1"/>
+  <axis xyz="-0.0 -1.0 -0.0"/>
+</joint>
+
+<joint name="Rigid 165" type="fixed">
+  <origin xyz="0.09018 -0.055511 -0.011433" rpy="0 0 0"/>
+  <parent link="Holder__1___5__1"/>
+  <child link="Bearing_Holder__6__1"/>
+</joint>
+
+<joint name="Rigid 166" type="fixed">
+  <origin xyz="0.085286 -0.01711 0.003056" rpy="0 0 0"/>
+  <parent link="Holder__1___5__1"/>
+  <child link="Holder__6__1"/>
+</joint>
+
+<joint name="Revolute 167" type="continuous">
+  <origin xyz="-0.0267 -0.008063 0.021602" rpy="0 0 0"/>
+  <parent link="Holder__6__1"/>
+  <child link="MG996R_Motor__1___5__1"/>
+  <axis xyz="0.0 0.0 -1.0"/>
+</joint>
+
+<joint name="Rigid 168" type="fixed">
+  <origin xyz="-0.004894 -0.001989 -0.038402" rpy="0 0 0"/>
+  <parent link="Holder__6__1"/>
+  <child link="Bearing_Holder__1___5__1"/>
+</joint>
+
+<joint name="Rigid 169" type="fixed">
+  <origin xyz="0.0143 -0.004772 -0.01785" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__1___5__1"/>
+  <child link="Femur__5__1"/>
+</joint>
+
+<joint name="Rigid 170" type="fixed">
+  <origin xyz="-0.104888 0.00934 0.0" rpy="0 0 0"/>
+  <parent link="Femur__5__1"/>
+  <child link="MG996R_Motor__8__1"/>
+</joint>
+
+<joint name="Revolute 171" type="continuous">
+  <origin xyz="0.014301 -0.004772 0.01785" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__8__1"/>
+  <child link="Tibia_Final___5__1"/>
+  <axis xyz="0.0 0.0 -1.0"/>
+</joint>
+
+<joint name="Rigid 172" type="fixed">
+  <origin xyz="0.00135 -0.039139 -0.0575" rpy="0 0 0"/>
+  <parent link="Tibia_Final___5__1"/>
+  <child link="Tibia_LSide_Final___5__1"/>
+</joint>
+
+<joint name="Rigid 173" type="fixed">
+  <origin xyz="-0.001502 -0.063908 -0.000238" rpy="0 0 0"/>
+  <parent link="Tibia_Final___5__1"/>
+  <child link="Triangle__5__1"/>
+</joint>
+
+<joint name="Revolute 179" type="continuous">
+  <origin xyz="0.018211 -0.002904 0.227581" rpy="0 0 0"/>
+  <parent link="Holder__1___2__1"/>
+  <child link="MG996R_Motor__1___2__1"/>
+  <axis xyz="-0.712798 0.0 -0.701369"/>
+</joint>
+
+<joint name="Rigid 180" type="fixed">
+  <origin xyz="-0.002021 -0.063849 0.002392" rpy="0 0 0"/>
+  <parent link="Tibia_wtf_1_1"/>
+  <child link="Triangle__1__1"/>
+</joint>
+
+<joint name="Rigid 184" type="fixed">
+  <origin xyz="-0.014301 0.004928 0.01765" rpy="0 0 0"/>
+  <parent link="MG996R_Motor__1___4__1"/>
+  <child link="Femur__4__1"/>
+</joint>
+
+<joint name="Rigid 185" type="fixed">
+  <origin xyz="0.048282 -0.000928 0.035789" rpy="0 0 0"/>
+  <parent link="Triangle__1__1"/>
+  <child link="Tibia_LSide_1_1"/>
+</joint>
+
+<joint name="Rigid 188" type="fixed">
+  <origin xyz="0.004894 -0.001989 0.021902" rpy="0 0 0"/>
+  <parent link="Holder__5__1"/>
+  <child link="Bearing_Holder__1___4__1"/>
+</joint>
+
+<joint name="Rigid 189" type="fixed">
+  <origin xyz="0.120002 -0.01691 0.013286" rpy="0 0 0"/>
+  <parent link="Holder__1___4__1"/>
+  <child link="Holder__5__1"/>
+</joint>
+
+<joint name="Rigid 190" type="fixed">
+  <origin xyz="-0.030805 -0.001989 -0.023446" rpy="0 0 0"/>
+  <parent link="Holder__1___2__1"/>
+  <child link="Bearing_Holder__3__1"/>
+</joint>
+
+</robot>

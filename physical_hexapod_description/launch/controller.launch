@@ -1,0 +1,9 @@
+<launch>
+
+<rosparam file="$(find working_description)/launch/controller.yaml" command="load"/>
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="working" args="Revolute 104_position_controller Revolute 108_position_controller Revolute 113_position_controller Revolute 116_position_controller Revolute 120_position_controller Revolute 125_position_controller Revolute 128_position_controller Revolute 135_position_controller Revolute 140_position_controller Revolute 142_position_controller Revolute 147_position_controller Revolute 155_position_controller Revolute 158_position_controller Revolute 159_position_controller Revolute 164_position_controller Revolute 167_position_controller Revolute 171_position_controller Revolute 179_position_controller joint_state_controller "/>
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+  <remap from="/joint_states" to="/working/joint_states"/>
+</node>
+
+</launch>
