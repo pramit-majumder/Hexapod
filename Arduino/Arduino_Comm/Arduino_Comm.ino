@@ -72,24 +72,24 @@ void loop() {
     tibiaVal = map(tibiaVal, 0, 180, 180, 0);
  
 
-    // setServoAngle(0, coxaVal);
-    // setServoAngle(1, femurVal);
-    // setServoAngle(2, tibiaVal);
+    setServoAngle(0, coxaVal);
+    setServoAngle(1, femurVal);
+    setServoAngle(2, tibiaVal);
 
-    // setServoAngle(5, coxaVal);
-    // setServoAngle(4, femurVal);
-    // setServoAngle(3, constrain(tibiaVal + 20, 0, 180));
+    setServoAngle(3, coxaVal);
+    setServoAngle(4, femurVal);//COXA JOINT AND TIBIA HAVE BEEN SWITCHED, CHECK WITH ONLY THIS
+    setServoAngle(5, tibiaVal);
 
-    // setServoAngle(6, coxaVal);
-    // setServoAngle(7, femurVal);
-    // setServoAngle(8, tibiaVal);
+    setServoAngle(6, coxaVal);
+    setServoAngle(7, femurVal);
+    setServoAngle(8, tibiaVal);
 
-    // setServoAngle(9, coxaVal);
-    // setServoAngle(10, femurVal);
-    // setServoAngle(11, tibiaVal);
+    setServoAngle(9, coxaVal);
+    setServoAngle(10, femurVal);
+    setServoAngle(11, tibiaVal);
 
     setServoAngle(12, coxaVal);
-    setServoAngle(13, femurVal);
+    setServoAngle(15, femurVal);
     setServoAngle(14, tibiaVal);
 
     servo1.write(coxaVal);
