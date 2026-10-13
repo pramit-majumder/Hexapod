@@ -1,0 +1,566 @@
+<?xml version="1.0"?>
+<robot name="Hexapod">
+  <mujoco>
+    <compiler meshdir="C:/Users/ASUS/Desktop/Hexapod/Models/URDF/hexapod_description/meshes" discardvisual="false" fusestatic="false"/>
+  </mujoco>
+  <link name="world"/>
+  <joint name="world_to_base" type="fixed">
+    <origin xyz="0 0 0.2" rpy="1.5708 0 0"/>
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="CoxaServo__1__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="MG996R_Motor__6__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="CoxaServo__2__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="MG996R_Motor__7__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="CoxaServo__3__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="MG996R_Motor__8__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="CoxaServo__4__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="MG996R_Motor__10__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="CoxaServo__5__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="MG996R_Motor__9__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="Holder__1__1">
+    <inertial>
+      <origin xyz="-0.0255568 -0.0538439 0.0245731" rpy="-0.594942437 0.200975604 2.17696386"/>
+      <mass value="0.309336"/>
+      <inertia ixx="0.000259617" iyy="0.000257994" izz="0.000239666" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__1__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__6__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__22__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__23__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_20" type="revolute">
+    <origin xyz="-0.129816 0.088859 0.039381" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Holder__1__1"/>
+    <axis xyz="-0.008081 -0.999967 0"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="femur_joint__3__1">
+    <inertial>
+      <origin xyz="-0.0471071 0.000278413 0.00716005" rpy="-0.777201564 -0.005739382 1.5633659"/>
+      <mass value="0.690314"/>
+      <inertia ixx="0.000774007" iyy="0.00069753" izz="0.000147462" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.155836 -0.035016 -0.106717" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="femur_joint__3__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_61" type="revolute">
+    <origin xyz="-0.02602 -0.053843 0.067336" rpy="0 0 0"/>
+    <parent link="Holder__1__1"/>
+    <child link="femur_joint__3__1"/>
+    <axis xyz="-0.712775 0.00576 -0.701369"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Leg__5__1">
+    <inertial>
+      <origin xyz="-0.021054 -0.0347628 -0.0223136" rpy="1.54013017 0.782995094 0.017343772"/>
+      <mass value="0.422492"/>
+      <inertia ixx="0.000917588" iyy="0.000636045" izz="0.000339367" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.209341 -0.035244 -0.161094" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Leg__5__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_67" type="revolute">
+    <origin xyz="-0.053505 0.000228 0.054377" rpy="0 0 0"/>
+    <parent link="femur_joint__3__1"/>
+    <child link="Leg__5__1"/>
+    <axis xyz="-0.712775 0.00576 -0.701369"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Holder__4__1">
+    <inertial>
+      <origin xyz="-0.031416 -0.0547386 -0.0002971" rpy="1.79295798 0.723701275 1.93562552"/>
+      <mass value="0.309336"/>
+      <inertia ixx="0.000259626" iyy="0.00025868" izz="0.000240989" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__4__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__7__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__20__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__21__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_23" type="revolute">
+    <origin xyz="-0.159698 0.090042 -0.069458" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Holder__4__1"/>
+    <axis xyz="-0.008081 -0.999967 0"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="femur_joint__5__1">
+    <inertial>
+      <origin xyz="-0.037489 0.001147 0.0100964" rpy="1.57079633 0 1.56601032"/>
+      <mass value="0.690314"/>
+      <inertia ixx="0.000774014" iyy="0.000697" izz="0.000146986" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.222574 -0.034609 0.079756" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="femur_joint__5__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_60" type="revolute">
+    <origin xyz="-0.062876 -0.055433 -0.010298" rpy="0 0 0"/>
+    <parent link="Holder__4__1"/>
+    <child link="femur_joint__5__1"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Leg__4__1">
+    <inertial>
+      <origin xyz="0.00105444 -0.0349413 -0.0304566" rpy="1.52023544 -0.011161199 0.010668766"/>
+      <mass value="0.422492"/>
+      <inertia ixx="0.000918097" iyy="0.000635722" izz="0.00033918" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.298206 -0.035962 0.041103" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Leg__4__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_66" type="revolute">
+    <origin xyz="-0.075632 0.001353 0.038653" rpy="0 0 0"/>
+    <parent link="femur_joint__5__1"/>
+    <child link="Leg__4__1"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Holder__3__1">
+    <inertial>
+      <origin xyz="0.0293569 -0.0528097 0.0007788" rpy="1.94309342 -0.968836876 1.07173222"/>
+      <mass value="0.309336"/>
+      <inertia ixx="0.000259565" iyy="0.000258084" izz="0.000240646" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__3__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__5__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__14__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__15__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_22" type="revolute">
+    <origin xyz="0.046379 0.085967 -0.070527" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Holder__3__1"/>
+    <axis xyz="-0.008081 -0.999967 0"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="femur_joint__2__1">
+    <inertial>
+      <origin xyz="0.0379102 -0.000408925 0.028864" rpy="1.56351292 0.000662472 1.55801474"/>
+      <mass value="0.690314"/>
+      <inertia ixx="0.000774102" iyy="0.000697029" izz="0.000147869" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.106779 -0.032894 0.099161" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="femur_joint__2__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_57" type="revolute">
+    <origin xyz="0.0604 -0.053073 -0.028634" rpy="0 0 0"/>
+    <parent link="Holder__3__1"/>
+    <child link="femur_joint__2__1"/>
+    <axis xyz="-0.008081 6.5e-05 0.999967"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Leg__1__1">
+    <inertial>
+      <origin xyz="-0.00186468 -0.034918 0.0304454" rpy="1.62096987 -0.019096146 -0.026464478"/>
+      <mass value="0.422492"/>
+      <inertia ixx="0.000917493" iyy="0.000635643" izz="0.000338864" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.18306 -0.032073 0.098545" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Leg__1__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_63" type="revolute">
+    <origin xyz="0.076281 -0.000821 0.000616" rpy="0 0 0"/>
+    <parent link="femur_joint__2__1"/>
+    <child link="Leg__1__1"/>
+    <axis xyz="-0.008081 6.5e-05 0.999967"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Holder__9__1">
+    <inertial>
+      <origin xyz="0.0220447 -0.0516251 -0.023912" rpy="-0.379297663 -0.488814098 0.36895167"/>
+      <mass value="0.309336"/>
+      <inertia ixx="0.000259234" iyy="0.000258362" izz="0.000239681" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.01799 -0.085061 0.179689" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__9__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.01799 -0.085061 0.179689" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__10__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.01799 -0.085061 0.179689" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__16__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.01799 -0.085061 0.179689" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__17__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_27" type="revolute">
+    <origin xyz="0.01799 0.085061 -0.179689" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Holder__9__1"/>
+    <axis xyz="-0.008081 -0.999967 0"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="femur_joint__1__1">
+    <inertial>
+      <origin xyz="0.0471063 -0.000482594 -0.00716008" rpy="-0.777283644 0.000276961 1.55661135"/>
+      <mass value="0.690314"/>
+      <inertia ixx="0.000774072" iyy="0.000697529" izz="0.000147399" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.040497 -0.033429 0.246364" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="femur_joint__1__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_58" type="revolute">
+    <origin xyz="0.022507 -0.051632 -0.066675" rpy="0 0 0"/>
+    <parent link="Holder__9__1"/>
+    <child link="femur_joint__1__1"/>
+    <axis xyz="0.712775 -0.00576 0.701369"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Leg__2__1">
+    <inertial>
+      <origin xyz="-0.104184 -0.0353981 -0.104912" rpy="1.60349926 0.783623184 -0.034637724"/>
+      <mass value="0.422492"/>
+      <inertia ixx="0.000917347" iyy="0.000635971" izz="0.000338682" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.21796 -0.033098 0.174217" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Leg__2__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_64" type="revolute">
+    <origin xyz="0.177463 -0.000331 0.072147" rpy="0 0 0"/>
+    <parent link="femur_joint__1__1"/>
+    <child link="Leg__2__1"/>
+    <axis xyz="0.712775 -0.00576 0.701369"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Holder__8__1">
+    <inertial>
+      <origin xyz="-0.0220233 -0.0294857 -0.0217811" rpy="0.822308226 0.636735473 1.30713851"/>
+      <mass value="0.309336"/>
+      <inertia ixx="0.000259715" iyy="0.000258284" izz="0.000240297" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.133563 -0.063502 0.181673" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__8__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.133563 -0.063502 0.181673" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__11__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.133563 -0.063502 0.181673" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__18__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.133563 -0.063502 0.181673" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__19__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_28" type="revolute">
+    <origin xyz="-0.133563 0.063502 -0.181673" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Holder__8__1"/>
+    <axis xyz="-0.008081 -0.999967 0"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="femur_joint__4__1">
+    <inertial>
+      <origin xyz="-0.0101953 0.0019033 -0.043485" rpy="0.785383303 0.005695024 1.56350698"/>
+      <mass value="0.690314"/>
+      <inertia ixx="0.000774007" iyy="0.000696994" izz="0.000146999" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.19422 -0.032403 0.208649" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="femur_joint__4__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_59" type="revolute">
+    <origin xyz="-0.060657 -0.031099 -0.026976" rpy="0 0 0"/>
+    <parent link="Holder__8__1"/>
+    <child link="femur_joint__4__1"/>
+    <axis xyz="0.707084 -0.005714 -0.707107"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Leg__3__1">
+    <inertial>
+      <origin xyz="-0.0521077 -0.0376113 0.048549" rpy="1.50092391 -0.794863302 0.017846428"/>
+      <mass value="0.422492"/>
+      <inertia ixx="0.000918612" iyy="0.000635445" izz="0.000338943" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.17798 -0.03709 0.327346" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Leg__3__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_65" type="revolute">
+    <origin xyz="0.01624 0.004687 -0.118697" rpy="0 0 0"/>
+    <parent link="femur_joint__4__1"/>
+    <child link="Leg__3__1"/>
+    <axis xyz="0.707084 -0.005714 -0.707107"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Holder_1">
+    <inertial>
+      <origin xyz="0.0238172 -0.0506503 0.021422" rpy="0.60608699 -0.80402395 2.1615641"/>
+      <mass value="0.309336"/>
+      <inertia ixx="0.000260111" iyy="0.000257399" izz="0.000240785" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.016477 -0.084094 -0.042275" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.016477 -0.084094 -0.042275" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__2__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.016477 -0.084094 -0.042275" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Holder__12__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.016477 -0.084094 -0.042275" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Bearing_Holder__13__1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_14" type="revolute">
+    <origin xyz="0.016477 0.084094 0.042275" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Holder_1"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="femur_joint_1">
+    <inertial>
+      <origin xyz="0.0185801 -0.0050549 0.034508" rpy="0.78546289 -0.000688377 1.55713381"/>
+      <mass value="0.690314"/>
+      <inertia ixx="0.000774071" iyy="0.000696994" izz="0.000146935" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.070541 -0.037989 -0.077869" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="femur_joint_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_56" type="revolute">
+    <origin xyz="0.054064 -0.046105 0.035594" rpy="0 0 0"/>
+    <parent link="Holder_1"/>
+    <child link="femur_joint_1"/>
+    <axis xyz="-0.707084 0.005714 0.707107"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+  <link name="Leg_1">
+    <inertial>
+      <origin xyz="-0.0227625 -0.0347491 0.0205914" rpy="1.63959606 -0.795088487 -0.033531397"/>
+      <mass value="0.422492"/>
+      <inertia ixx="0.00091784" iyy="0.000636075" izz="0.000339084" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.136283 -0.032451 -0.119156" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="Leg_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="Revolute_62" type="revolute">
+    <origin xyz="0.065742 -0.005538 0.041287" rpy="0 0 0"/>
+    <parent link="femur_joint_1"/>
+    <child link="Leg_1"/>
+    <axis xyz="-0.707084 0.005714 0.707107"/>
+    <limit lower="-1.57" upper="1.57" effort="1" velocity="5"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+</robot>
