@@ -1,0 +1,216 @@
+<mujoco model="Hexapod">
+  <compiler angle="radian" meshdir="C:/Users/ASUS/Desktop/Hexapod/Models/URDF/hexapod_description/meshes"/>
+
+  <option timestep="0.002" integrator="implicitfast"/>
+
+  <default>
+    <!-- visual only: collisions off so overlapping meshes don't fight each other -->
+    <geom contype="0" conaffinity="0"/>
+    <joint damping="0.05" armature="0.005" frictionloss="0.01" range="-1.57 1.57"/>
+    <position kp="10" kv="0.5" forcerange="-1 1" ctrlrange="-1.57 1.57"/>
+  </default>
+
+  <asset>
+    <mesh name="base_link" file="base_link.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="CoxaServo__1__1" file="CoxaServo__1__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="CoxaServo__2__1" file="CoxaServo__2__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="CoxaServo__3__1" file="CoxaServo__3__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="CoxaServo__4__1" file="CoxaServo__4__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="CoxaServo__5__1" file="CoxaServo__5__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder_1" file="Holder_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="MG996R_Motor__6__1" file="MG996R_Motor__6__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="MG996R_Motor__7__1" file="MG996R_Motor__7__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="MG996R_Motor__8__1" file="MG996R_Motor__8__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="MG996R_Motor__9__1" file="MG996R_Motor__9__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="MG996R_Motor__10__1" file="MG996R_Motor__10__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__1__1" file="Holder__1__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__2__1" file="Bearing_Holder__2__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__3__1" file="Holder__3__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__4__1" file="Holder__4__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__5__1" file="Bearing_Holder__5__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__6__1" file="Bearing_Holder__6__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__7__1" file="Bearing_Holder__7__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__9__1" file="Holder__9__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__8__1" file="Holder__8__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__10__1" file="Bearing_Holder__10__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__11__1" file="Bearing_Holder__11__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__12__1" file="Holder__12__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__13__1" file="Bearing_Holder__13__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__14__1" file="Holder__14__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__15__1" file="Bearing_Holder__15__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__16__1" file="Holder__16__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__17__1" file="Bearing_Holder__17__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__18__1" file="Holder__18__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__19__1" file="Bearing_Holder__19__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__20__1" file="Holder__20__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__21__1" file="Bearing_Holder__21__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Holder__22__1" file="Holder__22__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Bearing_Holder__23__1" file="Bearing_Holder__23__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="femur_joint_1" file="femur_joint_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="femur_joint__2__1" file="femur_joint__2__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="femur_joint__1__1" file="femur_joint__1__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="femur_joint__4__1" file="femur_joint__4__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="femur_joint__5__1" file="femur_joint__5__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="femur_joint__3__1" file="femur_joint__3__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Leg_1" file="Leg_1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Leg__1__1" file="Leg__1__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Leg__2__1" file="Leg__2__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Leg__3__1" file="Leg__3__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Leg__4__1" file="Leg__4__1.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="Leg__5__1" file="Leg__5__1.stl" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <worldbody>
+    <body name="rotate_root" pos="0 0 0.2" euler="1.5708 0 0">
+      <geom type="mesh" mesh="base_link"/>
+      <geom type="mesh" mesh="CoxaServo__1__1"/>
+      <geom type="mesh" mesh="MG996R_Motor__6__1"/>
+      <geom type="mesh" mesh="CoxaServo__2__1"/>
+      <geom type="mesh" mesh="MG996R_Motor__7__1"/>
+      <geom type="mesh" mesh="CoxaServo__3__1"/>
+      <geom type="mesh" mesh="MG996R_Motor__8__1"/>
+      <geom type="mesh" mesh="CoxaServo__4__1"/>
+      <geom type="mesh" mesh="MG996R_Motor__10__1"/>
+      <geom type="mesh" mesh="CoxaServo__5__1"/>
+      <geom type="mesh" mesh="MG996R_Motor__9__1"/>
+
+      <body name="Holder__1__1" pos="-0.189816 0.088859 0.159381">
+        <inertial pos="0.0344432 -0.0538439 -0.0954269" quat="0.415173 -0.220236 -0.21387 0.85638" mass="0.309336" diaginertia="0.000259617 0.000257994 0.000239666"/>
+        <joint group="1" name="Revolute 20" axis="-0.008081 -0.999967 0" pos="0.06 0 -0.12"/>
+        <geom pos="0.189816 -0.088859 -0.159381" quat="1 0 0 0" type="mesh" mesh="Holder__1__1"/>
+        <geom pos="0.189816 -0.088859 -0.159381" quat="1 0 0 0" type="mesh" mesh="Bearing_Holder__6__1"/>
+        <geom pos="0.189816 -0.088859 -0.159381" quat="1 0 0 0" type="mesh" mesh="Holder__22__1"/>
+        <geom pos="0.189816 -0.088859 -0.159381" quat="1 0 0 0" type="mesh" mesh="Bearing_Holder__23__1"/>
+        <body name="femur_joint__3__1" pos="0.03398 -0.053843 -0.052664">
+          <inertial pos="-0.0471071 0.000278413 0.00716005" quat="0.657575 -0.26704 -0.268805 0.651175" mass="0.690314" diaginertia="0.000774007 0.00069753 0.000147462"/>
+          <joint name="Revolute 61" axis="-0.712775 0.00576 -0.701369"/>
+          <geom pos="0.155836 -0.035016 -0.106717" quat="1 0 0 0" type="mesh" mesh="femur_joint__3__1"/>
+          <body name="Leg__5__1" pos="-0.053505 0.000228 0.054377">
+            <inertial pos="-0.021054 -0.0347628 -0.0223136" quat="0.665829 0.641108 0.279488 -0.25988" mass="0.422492" diaginertia="0.000917588 0.000636045 0.000339367"/>
+            <joint name="Revolute 67" axis="-0.712775 0.00576 -0.701369"/>
+            <geom pos="0.209341 -0.035244 -0.161094" quat="1 0 0 0" type="mesh" mesh="Leg__5__1"/>
+          </body>
+        </body>
+      </body>
+
+      <body name="Holder__4__1" pos="-0.309698 0.090042 -0.139458">
+        <inertial pos="0.118584 -0.0547386 0.0697029" quat="0.558909 0.232247 0.727061 0.324136" mass="0.309336" diaginertia="0.000259626 0.00025868 0.000240989"/>
+        <joint group="2" name="Revolute 23" axis="-0.008081 -0.999967 0" pos="0.15 0 0.07"/>
+        <geom pos="0.309698 -0.090042 0.139458" quat="1 0 0 0" type="mesh" mesh="Holder__4__1"/>
+        <geom pos="0.309698 -0.090042 0.139458" quat="1 0 0 0" type="mesh" mesh="Bearing_Holder__7__1"/>
+        <geom pos="0.309698 -0.090042 0.139458" quat="1 0 0 0" type="mesh" mesh="Holder__20__1"/>
+        <geom pos="0.309698 -0.090042 0.139458" quat="1 0 0 0" type="mesh" mesh="Bearing_Holder__21__1"/>
+        <body name="femur_joint__5__1" pos="-0.133876 -0.017433 0.059702">
+          <inertial pos="0.183511 -0.036853 0.0100964" quat="0.501195 0.501195 0.498802 0.498802" mass="0.690314" diaginertia="0.000774014 0.000697 0.000146986"/>
+          <joint name="Revolute 60" axis="0 0 -1" pos="0.221 -0.038 0"/>
+          <geom pos="0.443574 -0.072609 0.079756" quat="1 0 0 0" type="mesh" mesh="femur_joint__5__1"/>
+          <body name="Leg__4__1" pos="0.145368 -0.036647 0.038653">
+            <inertial pos="0.00105444 -0.0349413 -0.0304566" quat="0.724713 0.689008 -0.000369137 0.00771104" mass="0.422492" diaginertia="0.000918097 0.000635722 0.00033918"/>
+            <joint name="Revolute 66" axis="0 0 -1"/>
+            <geom pos="0.298206 -0.035962 0.041103" quat="1 0 0 0" type="mesh" mesh="Leg__4__1"/>
+          </body>
+        </body>
+      </body>
+
+      <body name="Holder__3__1" pos="-0.010621 0.085967 -0.000527">
+        <inertial pos="0.0863569 -0.0528097 -0.0692212" quat="0.232819 0.762432 0.147268 0.585496" mass="0.309336" diaginertia="0.000259565 0.000258084 0.000240646"/>
+        <joint group="3" name="Revolute 22" axis="-0.008081 -0.999967 0" pos="0.057 0 -0.07"/>
+        <geom pos="0.010621 -0.085967 0.000527" quat="1 0 0 0" type="mesh" mesh="Holder__3__1"/>
+        <geom pos="0.010621 -0.085967 0.000527" quat="1 0 0 0" type="mesh" mesh="Bearing_Holder__5__1"/>
+        <geom pos="0.010621 -0.085967 0.000527" quat="1 0 0 0" type="mesh" mesh="Holder__14__1"/>
+        <geom pos="0.010621 -0.085967 0.000527" quat="1 0 0 0" type="mesh" mesh="Bearing_Holder__15__1"/>
+        <body name="femur_joint__2__1" pos="0.1174 -0.053073 -0.098634">
+          <inertial pos="0.0379102 -0.000408925 0.028864" quat="0.505178 0.501184 0.495149 0.498434" mass="0.690314" diaginertia="0.000774102 0.000697029 0.000147869"/>
+          <joint name="Revolute 57" axis="-0.008081 6.5e-05 0.999967"/>
+          <geom pos="-0.106779 -0.032894 0.099161" quat="1 0 0 0" type="mesh" mesh="femur_joint__2__1"/>
+          <body name="Leg__1__1" pos="0.076281 -0.000821 0.000616">
+            <inertial pos="-0.00186468 -0.034918 0.0304454" quat="0.689147 0.724438 -0.016167 -0.00220025" mass="0.422492" diaginertia="0.000917493 0.000635643 0.000338864"/>
+            <joint name="Revolute 63" axis="-0.008081 6.5e-05 0.999967"/>
+            <geom pos="-0.18306 -0.032073 0.098545" quat="1 0 0 0" type="mesh" mesh="Leg__1__1"/>
+          </body>
+        </body>
+      </body>
+
+      <body name="Holder__9__1" pos="0.12799 0.085061 -0.033689">
+        <inertial pos="-0.0879553 -0.0516251 -0.169912" quat="0.945084 -0.136217 -0.267162 0.129946" mass="0.309336" diaginertia="0.000259234 0.000258362 0.000239681"/>
+        <joint group="4" name="Revolute 27" axis="-0.008081 -0.999967 0" pos="-0.11 0 -0.146"/>
+        <geom pos="-0.12799 -0.085061 0.033689" quat="1 0 0 0" type="mesh" mesh="Holder__9__1"/>
+        <geom pos="-0.12799 -0.085061 0.033689" quat="1 0 0 0" type="mesh" mesh="Bearing_Holder__10__1"/>
+        <geom pos="-0.12799 -0.085061 0.033689" quat="1 0 0 0" type="mesh" mesh="Holder__16__1"/>
+        <geom pos="-0.12799 -0.085061 0.033689" type="mesh" mesh="Bearing_Holder__17__1"/>
+        <body name="femur_joint__1__1" pos="-0.087493 -0.051632 -0.212675">
+          <inertial pos="0.0471063 -0.000482594 -0.00716008" quat="0.658962 -0.269929 -0.265947 0.649754" mass="0.690314" diaginertia="0.000774072 0.000697529 0.000147399"/>
+          <joint name="Revolute 58" axis="0.712775 -0.00576 0.701369"/>
+          <geom pos="-0.040497 -0.033429 0.246364" quat="1 0 0 0" type="mesh" mesh="femur_joint__1__1"/>
+          <body name="Leg__2__1" pos="0.177463 -0.000331 0.292147">
+            <inertial pos="-0.104184 -0.0353981 -0.324912" quat="0.6379 0.668619 0.254026 -0.285487" mass="0.422492" diaginertia="0.000917347 0.000635971 0.000338682"/>
+            <joint name="Revolute 64" axis="0.712775 -0.00576 0.701369" pos="0 0 -0.22"/>
+            <geom pos="-0.21796 -0.033098 -0.045783" quat="1 0 0 0" type="mesh" mesh="Leg__2__1"/>
+          </body>
+        </body>
+      </body>
+
+      <body name="Holder__8__1" pos="-0.133563 0.063502 -0.181673">
+        <inertial pos="-0.0220233 -0.0294857 -0.0217811" quat="0.767248 0.126898 0.458595 0.430022" mass="0.309336" diaginertia="0.000259715 0.000258284 0.000240297"/>
+        <joint group="5" name="Revolute 28" axis="-0.008081 -0.999967 0"/>
+        <geom pos="0.133563 -0.063502 0.181673" quat="1 0 0 0" type="mesh" mesh="Holder__8__1"/>
+        <geom pos="0.133563 -0.063502 0.181673" quat="1 0 0 0" type="mesh" mesh="Bearing_Holder__11__1"/>
+        <geom pos="0.133563 -0.063502 0.181673" quat="1 0 0 0" type="mesh" mesh="Holder__18__1"/>
+        <geom pos="0.133563 -0.063502 0.181673" quat="1 0 0 0" type="mesh" mesh="Bearing_Holder__19__1"/>
+        <body name="femur_joint__4__1" pos="-0.060657 0.004901 -0.306976">
+          <inertial pos="-0.0101953 -0.0340967 0.236515" quat="0.656425 0.269723 0.271471 0.650122" mass="0.690314" diaginertia="0.000774007 0.000696994 0.000146999"/>
+          <joint name="Revolute 59" axis="0.707084 -0.005714 -0.707107" pos="0 -0.036 0.28"/>
+          <geom pos="0.19422 -0.068403 0.488649" quat="1 0 0 0" type="mesh" mesh="femur_joint__4__1"/>
+          <body name="Leg__3__1" pos="0.01624 -0.031313 -0.106197">
+            <inertial pos="-0.0521077 -0.0376113 0.316049" quat="0.671987 0.631323 -0.277457 0.269967" mass="0.422492" diaginertia="0.000918612 0.000635445 0.000338943"/>
+            <joint name="Revolute 65" axis="0.707084 -0.005714 -0.707107" pos="0 -0 0.2675"/>
+            <geom pos="0.17798 -0.03709 0.594846" quat="1 0 0 0" type="mesh" mesh="Leg__3__1"/>
+          </body>
+        </body>
+      </body>
+
+      <body name="Holder_1" pos="-0.028523 0.084094 -0.042725">
+        <inertial pos="0.0688172 -0.0506503 0.106422" quat="0.310356 0.458751 0.0665613 0.829938" mass="0.309336" diaginertia="0.000260111 0.000257399 0.000240785"/>
+        <joint group="0" name="Revolute 14" axis="0 -1 0" pos="0.045 0 0.085"/>
+        <geom pos="0.028523 -0.084094 0.042725" quat="1 0 0 0" type="mesh" mesh="Holder_1"/>
+        <geom pos="0.028523 -0.084094 0.042725" quat="1 0 0 0" type="mesh" mesh="Bearing_Holder__2__1"/>
+        <geom pos="0.028523 -0.084094 0.042725" quat="1 0 0 0" type="mesh" mesh="Holder__12__1"/>
+        <geom pos="0.028523 -0.084094 0.042725" type="mesh" mesh="Bearing_Holder__13__1"/>
+        <body name="femur_joint_1" pos="0.099064 -0.018105 0.002594">
+          <inertial pos="0.0185801 -0.0330549 0.152508" quat="0.657628 0.272685 0.268538 0.648889" mass="0.690314" diaginertia="0.000774071 0.000696994 0.000146935"/>
+          <joint name="Revolute 56" axis="-0.707084 0.005714 0.707107" pos="0 -0.028 0.118"/>
+          <geom pos="-0.070541 -0.065989 0.040131" quat="1 0 0 0" type="mesh" mesh="femur_joint_1"/>
+          <body name="Leg_1" pos="0.065742 -0.033538 0.159287">
+            <inertial pos="-0.0227625 -0.0347491 0.0205914" quat="0.63381 0.669476 -0.275445 0.272426" mass="0.422492" diaginertia="0.00091784 0.000636075 0.000339084"/>
+            <joint name="Revolute 62" axis="-0.707084 0.005714 0.707107"/>
+            <geom pos="-0.136283 -0.032451 -0.119156" quat="1 0 0 0" type="mesh" mesh="Leg_1"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <!-- holders -->
+    <position name="holder_14" joint="Revolute 14"/>
+    <position name="holder_20" joint="Revolute 20"/>
+    <position name="holder_22" joint="Revolute 22"/>
+    <position name="holder_23" joint="Revolute 23"/>
+    <position name="holder_27" joint="Revolute 27"/>
+    <position name="holder_28" joint="Revolute 28"/>
+    <!-- femurs -->
+    <position name="femur_56" joint="Revolute 56"/>
+    <position name="femur_57" joint="Revolute 57"/>
+    <position name="femur_58" joint="Revolute 58"/>
+    <position name="femur_59" joint="Revolute 59"/>
+    <position name="femur_60" joint="Revolute 60"/>
+    <position name="femur_61" joint="Revolute 61"/>
+    <!-- legs (the link below each femur) -->
+    <position name="leg_62" joint="Revolute 62"/>
+    <position name="leg_63" joint="Revolute 63"/>
+    <position name="leg_64" joint="Revolute 64"/>
+    <position name="leg_65" joint="Revolute 65"/>
+    <position name="leg_66" joint="Revolute 66"/>
+    <position name="leg_67" joint="Revolute 67"/>
+  </actuator>
+</mujoco>

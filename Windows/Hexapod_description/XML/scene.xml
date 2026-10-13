@@ -1,0 +1,27 @@
+<mujoco model="hexapod_scene">
+  <include file="robot.xml"/>
+
+  <statistic center="0 0 0.1" extent="0.5"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3"/>
+    <global azimuth="130" elevation="-25"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0"
+             width="512" height="512"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge"
+             rgb1="0.2 0.2 0.2" rgb2="0.35 0.35 0.35"
+             markrgb="0.5 0.5 0.5" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true"
+             texrepeat="8 8" reflectance="0.15"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" directional="true" castshadow="false"/>
+    <!-- contype/conaffinity must be set explicitly: robot.xml defaults turn collisions off -->
+    <geom name="floor" type="plane" size="0 0 0.05" material="groundplane"
+          friction="1.8 0.5 0.5" condim="4" contype="1" conaffinity="1"/>
+  </worldbody>
+</mujoco>
