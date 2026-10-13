@@ -41,9 +41,8 @@ void setup() {
   while (Serial.available() > 0) {
     Serial.read();
   }
-  servo1.attach(9);
-  servo2.attach(10);
-  servo3.attach(11);
+  servo2.attach(6);
+  servo3.attach(7);
 
   pinMode(LED_BUILTIN, OUTPUT);
 }
@@ -89,10 +88,12 @@ void loop() {
     setServoAngle(11, tibiaVal);
 
     setServoAngle(12, coxaVal);
-    setServoAngle(15, femurVal);
+    femurVal = femurVal - 45;
+    setServoAngle(13, femurVal);
+    femurVal = femurVal + 45;
     setServoAngle(14, tibiaVal);
 
-    servo1.write(coxaVal);
+    setServoAngle(15, coxaVal);
     servo2.write(femurVal);
     servo3.write(tibiaVal);
     
