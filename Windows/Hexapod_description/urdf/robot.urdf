@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<!-- Converted from MJCF "Hexapod". Not representable in URDF: position-actuator gains (kp=30, kv=1),
+     joint armature (0.005), floor-only contact filtering, geom friction, IMU sensors. velocity="6.28" is a placeholder. -->
+<robot name="Hexapod">
+
+  <!-- Massless Z-up root; rotate_root carries the CAD Y-up -> Z-up rotation (euler 90deg about X) -->
+  <link name="root"/>
+
+  <link name="rotate_root">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="2"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/CoxaServo__1__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/CoxaServo__1__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/MG996R_Motor__6__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/MG996R_Motor__6__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/CoxaServo__2__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/CoxaServo__2__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/MG996R_Motor__7__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/MG996R_Motor__7__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/CoxaServo__3__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/CoxaServo__3__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/MG996R_Motor__8__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/MG996R_Motor__8__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/CoxaServo__4__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/CoxaServo__4__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/MG996R_Motor__10__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/MG996R_Motor__10__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/CoxaServo__5__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/CoxaServo__5__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/MG996R_Motor__9__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/MG996R_Motor__9__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+  </link>
+
+  <joint name="root_to_rotate_root" type="fixed">
+    <parent link="root"/>
+    <child link="rotate_root"/>
+    <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+  </joint>
+
+  <link name="imu_site"/>
+  <joint name="imu_site_joint" type="fixed">
+    <parent link="rotate_root"/>
+    <child link="imu_site"/>
+    <origin xyz="0 0.06 -0.6" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ===== Leg A: Revolute 20 / 61 / 67 ===== -->
+  <link name="Holder__1__1">
+    <inertial>
+      <origin xyz="-0.0255568 -0.0538439 0.0245731" rpy="-0.5949424371 0.2009756038 2.176963864"/>
+      <mass value="0.309336"/>
+      <inertia ixx="0.000259617" ixy="0" ixz="0" iyy="0.000257994" iyz="0" izz="0.000239666"/>
+    </inertial>
+    <visual><origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__1__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__1__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__6__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__6__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__22__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__22__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__23__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.129816 -0.088859 -0.039381" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__23__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+  </link>
+
+  <joint name="Revolute 20" type="revolute">
+    <parent link="rotate_root"/>
+    <child link="Holder__1__1"/>
+    <origin xyz="-0.129816 0.088859 0.039381" rpy="0 0 0"/>
+    <axis xyz="-0.008081 -0.999967 0"/>
+    <limit lower="-1.57" upper="1.57" effort="3" velocity="6.28"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+
+  <link name="femur_joint__3__1">
+    <inertial>
+      <origin xyz="-0.0471071 0.000278413 0.00716005" rpy="-0.7772015642 -0.00573938182 1.563365904"/>
+      <mass value="0.690314"/>
+      <inertia ixx="0.000774007" ixy="0" ixz="0" iyy="0.00069753" iyz="0" izz="0.000147462"/>
+    </inertial>
+    <visual><origin xyz="0.155836 -0.035016 -0.106717" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/femur_joint__3__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.155836 -0.035016 -0.106717" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/femur_joint__3__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+  </link>
+
+  <joint name="Revolute 61" type="revolute">
+    <parent link="Holder__1__1"/>
+    <child link="femur_joint__3__1"/>
+    <origin xyz="-0.02602 -0.053843 0.067336" rpy="0 0 0"/>
+    <axis xyz="-0.712775 0.00576 -0.701369"/>
+    <limit lower="-1.57" upper="1.57" effort="3" velocity="6.28"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+
+  <link name="Leg__5__1">
+    <inertial>
+      <origin xyz="-0.021054 -0.0347628 -0.0223136" rpy="1.540130171 0.7829950936 0.0173437721"/>
+      <mass value="0.422492"/>
+      <inertia ixx="0.000917588" ixy="0" ixz="0" iyy="0.000636045" iyz="0" izz="0.000339367"/>
+    </inertial>
+    <visual><origin xyz="0.209341 -0.035244 -0.161094" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Leg__5__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.209341 -0.035244 -0.161094" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Leg__5__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+  </link>
+
+  <joint name="Revolute 67" type="revolute">
+    <parent link="femur_joint__3__1"/>
+    <child link="Leg__5__1"/>
+    <origin xyz="-0.053505 0.000228 0.054377" rpy="0 0 0"/>
+    <axis xyz="-0.712775 0.00576 -0.701369"/>
+    <limit lower="-1.57" upper="1.57" effort="3" velocity="6.28"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+
+  <!-- ===== Leg B: Revolute 23 / 60 / 66 ===== -->
+  <link name="Holder__4__1">
+    <inertial>
+      <origin xyz="-0.031416 -0.0547386 -0.0002971" rpy="1.79295798 0.7237012754 1.93562552"/>
+      <mass value="0.309336"/>
+      <inertia ixx="0.000259626" ixy="0" ixz="0" iyy="0.00025868" iyz="0" izz="0.000240989"/>
+    </inertial>
+    <visual><origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__4__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__4__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__7__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__7__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__20__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__20__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__21__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.159698 -0.090042 0.069458" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__21__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+  </link>
+
+  <joint name="Revolute 23" type="revolute">
+    <parent link="rotate_root"/>
+    <child link="Holder__4__1"/>
+    <origin xyz="-0.159698 0.090042 -0.069458" rpy="0 0 0"/>
+    <axis xyz="-0.008081 -0.999967 0"/>
+    <limit lower="-1.57" upper="1.57" effort="3" velocity="6.28"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+
+  <link name="femur_joint__5__1">
+    <inertial>
+      <origin xyz="-0.037489 0.001147 0.0100964" rpy="1.570796327 0 1.566010322"/>
+      <mass value="0.690314"/>
+      <inertia ixx="0.000774014" ixy="0" ixz="0" iyy="0.000697" iyz="0" izz="0.000146986"/>
+    </inertial>
+    <visual><origin xyz="0.222574 -0.034609 0.079756" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/femur_joint__5__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.222574 -0.034609 0.079756" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/femur_joint__5__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+  </link>
+
+  <joint name="Revolute 60" type="revolute">
+    <parent link="Holder__4__1"/>
+    <child link="femur_joint__5__1"/>
+    <origin xyz="-0.062876 -0.055433 -0.010298" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-1.57" upper="1.57" effort="3" velocity="6.28"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+
+  <link name="Leg__4__1">
+    <inertial>
+      <origin xyz="0.00105444 -0.0349413 -0.0304566" rpy="1.520235435 -0.01116119882 0.01066876616"/>
+      <mass value="0.422492"/>
+      <inertia ixx="0.000918097" ixy="0" ixz="0" iyy="0.000635722" iyz="0" izz="0.00033918"/>
+    </inertial>
+    <visual><origin xyz="0.298206 -0.035962 0.041103" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Leg__4__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="0.298206 -0.035962 0.041103" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Leg__4__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+  </link>
+
+  <joint name="Revolute 66" type="revolute">
+    <parent link="femur_joint__5__1"/>
+    <child link="Leg__4__1"/>
+    <origin xyz="-0.075632 0.001353 0.038653" rpy="0 0 0"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-1.57" upper="1.57" effort="3" velocity="6.28"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+
+  <!-- ===== Leg C: Revolute 22 / 57 / 63 ===== -->
+  <link name="Holder__3__1">
+    <inertial>
+      <origin xyz="0.0293569 -0.0528097 0.0007788" rpy="1.943093419 -0.9688368765 1.071732221"/>
+      <mass value="0.309336"/>
+      <inertia ixx="0.000259565" ixy="0" ixz="0" iyy="0.000258084" iyz="0" izz="0.000240646"/>
+    </inertial>
+    <visual><origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__3__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__3__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__5__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__5__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__14__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__14__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__15__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="-0.046379 -0.085967 0.070527" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__15__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+  </link>
+
+  <joint name="Revolute 22" type="revolute">
+    <parent link="rotate_root"/>
+    <child link="Holder__3__1"/>
+    <origin xyz="0.046379 0.085967 -0.070527" rpy="0 0 0"/>
+    <axis xyz="-0.008081 -0.999967 0"/>
+    <limit lower="-1.57" upper="1.57" effort="3" velocity="6.28"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+
+  <link name="femur_joint__2__1">
+    <inertial>
+      <origin xyz="0.0379102 -0.000408925 0.028864" rpy="1.563512925 0.0006624719117 1.558014737"/>
+      <mass value="0.690314"/>
+      <inertia ixx="0.000774102" ixy="0" ixz="0" iyy="0.000697029" iyz="0" izz="0.000147869"/>
+    </inertial>
+    <visual><origin xyz="-0.106779 -0.032894 0.099161" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/femur_joint__2__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="-0.106779 -0.032894 0.099161" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/femur_joint__2__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+  </link>
+
+  <joint name="Revolute 57" type="revolute">
+    <parent link="Holder__3__1"/>
+    <child link="femur_joint__2__1"/>
+    <origin xyz="0.0604 -0.053073 -0.028634" rpy="0 0 0"/>
+    <axis xyz="-0.008081 6.5e-05 0.999967"/>
+    <limit lower="-1.57" upper="1.57" effort="3" velocity="6.28"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+
+  <link name="Leg__1__1">
+    <inertial>
+      <origin xyz="-0.00186468 -0.034918 0.0304454" rpy="1.620969867 -0.01909614613 -0.02646447757"/>
+      <mass value="0.422492"/>
+      <inertia ixx="0.000917493" ixy="0" ixz="0" iyy="0.000635643" iyz="0" izz="0.000338864"/>
+    </inertial>
+    <visual><origin xyz="-0.18306 -0.032073 0.098545" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Leg__1__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="-0.18306 -0.032073 0.098545" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Leg__1__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+  </link>
+
+  <joint name="Revolute 63" type="revolute">
+    <parent link="femur_joint__2__1"/>
+    <child link="Leg__1__1"/>
+    <origin xyz="0.076281 -0.000821 0.000616" rpy="0 0 0"/>
+    <axis xyz="-0.008081 6.5e-05 0.999967"/>
+    <limit lower="-1.57" upper="1.57" effort="3" velocity="6.28"/>
+    <dynamics damping="0.05" friction="0.01"/>
+  </joint>
+
+  <!-- ===== Leg D: Revolute 27 / 58 / 64 ===== -->
+  <link name="Holder__9__1">
+    <inertial>
+      <origin xyz="0.0220447 -0.0516251 -0.023912" rpy="-0.3792976629 -0.488814098 0.3689516703"/>
+      <mass value="0.309336"/>
+      <inertia ixx="0.000259234" ixy="0" ixz="0" iyy="0.000258362" iyz="0" izz="0.000239681"/>
+    </inertial>
+    <visual><origin xyz="-0.01799 -0.085061 0.179689" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__9__1.stl" scale="0.001 0.001 0.001"/></geometry></visual>
+    <collision><origin xyz="-0.01799 -0.085061 0.179689" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Holder__9__1.stl" scale="0.001 0.001 0.001"/></geometry></collision>
+    <visual><origin xyz="-0.01799 -0.085061 0.179689" rpy="0 0 0"/><geometry><mesh filename="package://hexapod_description/meshes/Bearing_Holder__10__1.stl" scale="0.001 0.001
