@@ -15,9 +15,13 @@ ament_target_dependencies(controller rclcpp hexapod_interfaces)
 add_executable(waypoints src/generate_waypoints.cpp)
 ament_target_dependencies(waypoints rclcpp hexapod_interfaces)
 
+add_executable(communication src/arduino_comm.cpp)
+ament_target_dependencies(communication rclcpp hexapod_interfaces)
+
 install(TARGETS
   controller
   waypoints
+  communication
 
   DESTINATION lib/${PROJECT_NAME}
 )

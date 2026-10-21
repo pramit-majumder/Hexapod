@@ -10,6 +10,8 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/LegActuators.msg"
   "msg/Coordinates.msg"
+  "msg/IndividualCoordinates.msg"
+  "msg/Leg.msg"
 
   "srv/InverseKinematics.srv"
 )

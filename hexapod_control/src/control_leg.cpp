@@ -1,6 +1,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "hexapod_interfaces/msg/coordinates.hpp"
 #include "hexapod_interfaces/msg/leg_actuators.hpp"
+#include "hexapod_interfaces/msg/leg.hpp"
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -28,7 +29,7 @@ class control_leg : public rclcpp::Node
             // Runs interpolation every 10 ms
             timer = this->create_wall_timer(
                 std::chrono::milliseconds(this->milliss),
-                std::bind(&control_leg::placeholder_method, this)
+                std::bind(&control_leg::publisher, this)
             );
 
             x = 0.00;
@@ -50,7 +51,7 @@ class control_leg : public rclcpp::Node
             float z;
         };
 
-        void placeholder_method(){
+        void publisher(){
 
             if(!target_reached){
 
@@ -97,6 +98,10 @@ class control_leg : public rclcpp::Node
 
             double a = this->femur_l;
             double b = this->tibia_l;
+
+            if(msg->sampling != 0){
+                this->sampling = msg->sampling;
+            }
 
             // Distance from the femur joint to the target foot position
             double c = hypot(msg->z - 0, msg->y);

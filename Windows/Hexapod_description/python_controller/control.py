@@ -2,7 +2,7 @@ import mujoco
 import mujoco.viewer
 import time
 
-MODEL_PATH = r"C:\Users\ASUS\Desktop\Hexapod\Scripts\Training\scene.xml"
+MODEL_PATH = r"/home/waves/hexapod/src/Windows/Hexapod_description/XML/scene.xml"
 
 model = mujoco.MjModel.from_xml_path(MODEL_PATH)
 data = mujoco.MjData(model)

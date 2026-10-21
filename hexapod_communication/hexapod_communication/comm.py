@@ -10,6 +10,7 @@ class DriverNode(Node):
     def __init__(self):
         super().__init__("Client")
         self.sub = self.create_subscription(LegActuators, "leg", self.move_leg, 10)
+        self.get_logger().info("Whatever")
 
     def move_leg(self, msg):
         cmd = str(int(msg.coxa)) + ";" + str(int(msg.femur)) + ";" + str(int(msg.tibia)) + "\n"
@@ -17,7 +18,6 @@ class DriverNode(Node):
 
 
 def main(args=None):
-
     rclpy.init(args=args)
     node = DriverNode()
     rclpy.spin(node)

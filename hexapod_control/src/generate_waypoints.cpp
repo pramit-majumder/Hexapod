@@ -10,7 +10,7 @@ class generate_waypoints : public rclcpp::Node
         generate_waypoints() : Node("waypoints"){
 
             // Time between each waypoint
-            time_wait = 1000;
+            time_wait = 3000;
 
             // Publishes target coordinates
             coords = this->create_publisher<hexapod_interfaces::msg::Coordinates>("coords", 10);
