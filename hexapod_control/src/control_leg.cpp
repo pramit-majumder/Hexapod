@@ -19,7 +19,7 @@
 
 // d = sqrt((target_y)^2 + (target_z)^2);
 
-// alpha = abs(atand((target_y)/-target_z));
+// alpha = std::abs(atand((target_y)/-target_z));
 
 // if isnan(alpha)
 //     alpha = 0;
@@ -35,13 +35,13 @@
 // t2 = beta + alpha
 // t3 = 180 - gamma
 
-// tx = 180 - abs(t2);
+// tx = 180 - std::abs(t2);
 // ty = 180 - (90 + tx);
-// ta = 180 - abs(gamma) - abs(ty);
+// ta = 180 - std::abs(gamma) - std::abs(ty);
 
 // e1 = b * cosd(ty);
 // e2 = c * cosd(ta);
-// e = abs(e1 + e2);
+// e = std::abs(e1 + e2);
 // f = sqrt(((target_x)^2)+((target_y)^2));
 // t1 = acosd( ( (a*a) + (e*e) - (f*f) ) / ( 2 * a * e) ) - 90
 
@@ -173,14 +173,20 @@ class control_leg : public rclcpp::Node
             }
 
             // Coxa angle
-            float delta = (
-                msg->x == 0
-                ? 0.0f
-                : (atan2(msg->x, msg->y) * 180.0f / M_PI)
-            );
+            float t2 = beta + alpha;
+
+            float tx = 180 - std::abs(t2);
+            float ty = 180 - (90 + tx);
+            float ta = 180 - std::abs(gamma) - std::abs(ty);
+            float e = std::abs((a * cos(ty)) + (b * cos(ta)));
+            float f = sqrt(((msg->x)*(msg->x))+((msg->y)*(msg->y)));
+
+            RCLCPP_INFO(this->get_logger(), "%f %f %f %f", e, f, (this->coxa*this->coxa) + (e*e) - (f*f), ( 2 * this->coxa * e));
+
+            float t1 = (acos( ( (this->coxa*this->coxa) + (e*e) - (f*f) ) / ( 2 * this->coxa * e) )* 180.0f / M_PI) - 90.0f;      
 
             // IK angles into servo angles
-            this->coxa = 90 - delta;
+            this->coxa = t1;
 
             this->femur = std::clamp(
                 std::abs(alpha + beta + 90),
