@@ -1,0 +1,70 @@
+[1.625s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'hexapod_sim']
+[1.626s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['hexapod_sim'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7b16a30bb610>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7b16a30baf80>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7b16a30baf80>>, mixin_verb=('build',))
+[3.397s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[3.398s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[3.398s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[3.398s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[3.399s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[3.399s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[3.399s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/waves/hexapod/src/hexapod/src'
+[3.400s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[3.401s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[3.402s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[3.402s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[3.403s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[3.403s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[3.404s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[3.404s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[3.404s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[3.474s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[3.475s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[3.475s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[3.475s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[3.475s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[3.475s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[3.475s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[3.475s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[3.476s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[3.476s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[3.476s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[3.476s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[3.477s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[3.477s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[3.477s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[3.477s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[3.477s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[3.477s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[3.477s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[3.478s] WARNING:colcon.colcon_core.package_selection:ignoring unknown package 'hexapod_sim' in --packages-select
+[3.732s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[3.733s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[3.813s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 6 installed packages in /home/waves/mujoco_env/install
+[3.816s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 10 installed packages in /home/waves/hexapod/install
+[3.822s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 10 installed packages in /home/waves/ros2_ws/install
+[3.824s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/waves/research/install
+[3.835s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 11 installed packages in /home/waves/ros2_sim/install
+[3.894s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 346 installed packages in /home/waves/ros2_humble/install
+[3.903s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/waves/ros2_ws/src/my_py_pkg/my_py_pkg/install
+[3.908s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 212 installed packages in /opt/ros/humble
+[3.937s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[4.229s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[4.245s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[4.249s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[4.253s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[4.254s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[4.254s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[4.320s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[4.327s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[4.329s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[4.387s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[4.421s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[4.423s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/waves/hexapod/src/hexapod/src/install/local_setup.ps1'
+[4.426s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/waves/hexapod/src/hexapod/src/install/_local_setup_util_ps1.py'
+[4.429s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/waves/hexapod/src/hexapod/src/install/setup.ps1'
+[4.516s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/waves/hexapod/src/hexapod/src/install/local_setup.sh'
+[4.520s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/waves/hexapod/src/hexapod/src/install/_local_setup_util_sh.py'
+[4.525s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/waves/hexapod/src/hexapod/src/install/setup.sh'
+[4.587s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/waves/hexapod/src/hexapod/src/install/local_setup.bash'
+[4.590s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/waves/hexapod/src/hexapod/src/install/setup.bash'
+[4.635s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/waves/hexapod/src/hexapod/src/install/local_setup.zsh'
+[4.637s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/waves/hexapod/src/hexapod/src/install/setup.zsh'

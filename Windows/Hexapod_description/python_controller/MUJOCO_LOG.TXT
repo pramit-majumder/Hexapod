@@ -1,0 +1,2 @@
+WARNING Wed Oct 21 22:03:06 2026: File size over 2GB is not supported. File: '/home/waves/hexapod/src/Windows/Hexapod_description/meshes'
+

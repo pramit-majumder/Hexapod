@@ -1,5 +1,5 @@
 <mujoco model="Hexapod">
-  <compiler angle="radian" meshdir="C:/Users/ASUS/Desktop/Hexapod/Models/URDF/hexapod_description/meshes"/>
+  <compiler angle="radian" meshdir="/home/waves/hexapod/src/Windows/Hexapod_description/meshes"/>
 
   <option timestep="0.002" integrator="implicitfast"/>
 
@@ -199,23 +199,23 @@
     <position name="Coxa_FL" joint="Revolute 14"/> 
     <position name="Femur_FL" joint="Revolute 56"/>
     <position name="Tibia_FL" joint="Revolute 62"/>
-    
-    <position name="Coxa_FR" joint="Revolute 20"/>
-    <position name="Femur_FR" joint="Revolute 61"/>
-    <position name="Tibia_FR" joint="Revolute 67"/>
-
+  
     <position name="Coxa_ML" joint="Revolute 22"/>
     <position name="Femur_ML" joint="Revolute 57"/>
     <position name="Tibia_ML" joint="Revolute 63"/>
-    
-    <position name="Coxa_MR" joint="Revolute 23"/>
-    <position name="Femur_MR" joint="Revolute 60"/>
-    <position name="Tibia_MR" joint="Revolute 66"/>
     
     <position name="Coxa_RL" joint="Revolute 27"/>
     <position name="Femur_RL" joint="Revolute 58"/>
     <position name="Tibia_RL" joint="Revolute 64"/>
     
+    <position name="Coxa_FR" joint="Revolute 20"/>
+    <position name="Femur_FR" joint="Revolute 61"/>
+    <position name="Tibia_FR" joint="Revolute 67"/>
+    
+    <position name="Coxa_MR" joint="Revolute 23"/>
+    <position name="Femur_MR" joint="Revolute 60"/>
+    <position name="Tibia_MR" joint="Revolute 66"/>
+
     <position name="Coxa_RR" joint="Revolute 28"/>
     <position name="Femur_RR" joint="Revolute 59"/>
     <position name="Tibia_RR" joint="Revolute 65"/>    
