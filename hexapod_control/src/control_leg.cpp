@@ -7,6 +7,46 @@
 #include <thread>
 #include <algorithm>
 
+
+// a = 10;
+// b = 75;
+// c = 112;
+// theta1 = 0;
+
+// target_x = 0;
+// target_y = 75;
+// target_z = 112;
+
+// d = sqrt((target_y)^2 + (target_z)^2);
+
+// alpha = abs(atand((target_y)/-target_z));
+
+// if isnan(alpha)
+//     alpha = 0;
+// end
+// beta = acosd( ((b*b) + (d^2) - (l^2)) / (2*b*d));
+
+// if isnan(beta)
+//     beta = 0;
+// end
+
+// gamma = acosd( ((b^2) + (c^2) - (d^2)) / (2*b*c) );
+
+// t2 = beta + alpha
+// t3 = 180 - gamma
+
+// tx = 180 - abs(t2);
+// ty = 180 - (90 + tx);
+// ta = 180 - abs(gamma) - abs(ty);
+
+// e1 = b * cosd(ty);
+// e2 = c * cosd(ta);
+// e = abs(e1 + e2);
+// f = sqrt(((target_x)^2)+((target_y)^2));
+// t1 = acosd( ( (a*a) + (e*e) - (f*f) ) / ( 2 * a * e) ) - 90
+
+
+
 using namespace std;
 using namespace std::placeholders;
 
