@@ -13,7 +13,12 @@ class generate_waypoints : public rclcpp::Node
             time_wait = 3000;
 
             // Publishes target coordinates
-            coords = this->create_publisher<hexapod_interfaces::msg::Coordinates>("coords", 10);
+            coords1 = this->create_publisher<hexapod_interfaces::msg::Coordinates>("coords1", 10);
+            coords2 = this->create_publisher<hexapod_interfaces::msg::Coordinates>("coords2", 10);
+            coords3 = this->create_publisher<hexapod_interfaces::msg::Coordinates>("coords3", 10);
+            coords4 = this->create_publisher<hexapod_interfaces::msg::Coordinates>("coords4", 10);
+            coords5 = this->create_publisher<hexapod_interfaces::msg::Coordinates>("coords5", 10);
+            coords6 = this->create_publisher<hexapod_interfaces::msg::Coordinates>("coords6", 10);
 
             // Calls the waypoint generator every 1 second
             timer = this->create_wall_timer(chrono::milliseconds(this->time_wait), bind(&generate_waypoints::call, this));
@@ -22,41 +27,67 @@ class generate_waypoints : public rclcpp::Node
     private:
 
         void call(){
-
-            auto node = hexapod_interfaces::msg::Coordinates();
+            auto node1 = hexapod_interfaces::msg::Coordinates();
+            auto node2 = hexapod_interfaces::msg::Coordinates();
 
             // Select the current waypoint
-            node.x = this->waypoints[0][this->i];
-            node.y = this->waypoints[1][this->i];
-            node.z = this->waypoints[2][this->i];
+            node1.x = this->waypoints[this->i][0];
+            node1.y = this->waypoints[this->i][1];
+            node1.z = this->waypoints[this->i][2];
+
+            node2.x = this->waypoints[this->j][0];
+            node2.y = this->waypoints[this->j][1];
+            node2.z = this->waypoints[this->j][2];
 
             // Move to the next waypoint
+            this->j++;
             this->i++;
 
             // Restart after the third waypoint
             if(i > 2){
                 i = 0;
             }
+            if(j > 2){
+                j = 0;
+            }
 
-            this->coords->publish(node);
+            this->coords1->publish(node1);
+            this->coords3->publish(node1);
+            this->coords5->publish(node1);
 
-            RCLCPP_INFO(this->get_logger(), "X: %f", node.x);
-            RCLCPP_INFO(this->get_logger(), "Y: %f", node.y);
-            RCLCPP_INFO(this->get_logger(), "Z: %f", node.z);
+            this->coords2->publish(node2);
+            this->coords4->publish(node2);
+            this->coords6->publish(node2);
+
+            RCLCPP_INFO(this->get_logger(), "I: %d", i);
+            RCLCPP_INFO(this->get_logger(), "X: %f", node1.x);
+            RCLCPP_INFO(this->get_logger(), "Y: %f", node1.y);
+            RCLCPP_INFO(this->get_logger(), "Z: %f", node1.z);
+
+            RCLCPP_INFO(this->get_logger(), "J: %d", j);
+            RCLCPP_INFO(this->get_logger(), "X: %f", node2.x);
+            RCLCPP_INFO(this->get_logger(), "Y: %f", node2.y);
+            RCLCPP_INFO(this->get_logger(), "Z: %f", node2.z);
         }
 
         int time_wait;
 
         // Three waypoints represented as X, Y and Z coordinate arrays
         float waypoints[3][3] = {
-            {90.0f, 0.0f, -90.0f},
-            {90.0f, 90.0f, 90.0f},
-            {60.0f, -30.0f, 60.0f}
+            {0.0f, 75.0f, 112.0f},
+            {0.0f, 75.0f, 90.0f},
+            {0.0f, 75.0f, 70.0f}
         };
 
         int i = 0;
+        int j = 0;
 
-        rclcpp::Publisher<hexapod_interfaces::msg::Coordinates>::SharedPtr coords;
+        rclcpp::Publisher<hexapod_interfaces::msg::Coordinates>::SharedPtr coords1;
+        rclcpp::Publisher<hexapod_interfaces::msg::Coordinates>::SharedPtr coords2;
+        rclcpp::Publisher<hexapod_interfaces::msg::Coordinates>::SharedPtr coords3;
+        rclcpp::Publisher<hexapod_interfaces::msg::Coordinates>::SharedPtr coords4;
+        rclcpp::Publisher<hexapod_interfaces::msg::Coordinates>::SharedPtr coords5;
+        rclcpp::Publisher<hexapod_interfaces::msg::Coordinates>::SharedPtr coords6;
         rclcpp::TimerBase::SharedPtr timer;
 };
 
