@@ -44,10 +44,10 @@ class generate_waypoints : public rclcpp::Node
             this->i++;
 
             // Restart after the third waypoint
-            if(i > 2){
+            if(i > 3){
                 i = 0;
             }
-            if(j > 2){
+            if(j > 3){
                 j = 0;
             }
 
@@ -73,14 +73,15 @@ class generate_waypoints : public rclcpp::Node
         int time_wait;
 
         // Three waypoints represented as X, Y and Z coordinate arrays
-        float waypoints[3][3] = {
-            {0.0f, 75.0f, 112.0f},
-            {0.0f, 75.0f, 90.0f},
-            {0.0f, 75.0f, 70.0f}
+        float waypoints[4][3] = {
+            {25.0f, 50.0f, 112.0f},
+            {0.0f, 50.0f, 50.0f},
+            {-25.0f, 50.0f, 50.0f},
+            {-0.0f, 50.0f, 112.0f}
         };
 
         int i = 0;
-        int j = 0;
+        int j = 2;
 
         rclcpp::Publisher<hexapod_interfaces::msg::Coordinates>::SharedPtr coords1;
         rclcpp::Publisher<hexapod_interfaces::msg::Coordinates>::SharedPtr coords2;

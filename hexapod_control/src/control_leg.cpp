@@ -140,7 +140,7 @@ class control_leg : public rclcpp::Node
                 this->sampling = msg->sampling;
             }
 
-            float t1 = atan(msg->y/msg->x);
+            float t1 = atan2(msg->y,-msg->x);
             float target_y = std::abs((msg->y)/sin(t1));
             RCLCPP_INFO(this->get_logger(), "target_y:%f sin(t1):%f msg->y:%f msg->y+coxa:%f msg->x:%f t1:%f", target_y, sin(t1) * 180.0f / M_PI, msg->y, msg->y+this->coxa, msg->x, sin(t1));
 
@@ -174,16 +174,6 @@ class control_leg : public rclcpp::Node
             }
 
             // Coxa angle
-            // float t2 = beta + alpha;
-
-            // float tx = 180 - std::abs(t2);
-            // float ty = 180 - (90 + tx);
-            // float ta = 180 - std::abs(gamma) - std::abs(ty);
-            // float e = std::abs((a * cos(ty)) + (b * cos(ta)));
-            // float f = sqrt(((msg->x)*(msg->x))+((msg->y)*(msg->y)));
-
-
-            // float t1 = (acos( ( (this->coxa*this->coxa) + (e*e) - (f*f) ) / ( 2 * this->coxa * e) )* 180.0f / M_PI) - 90.0f;      
 
             // IK angles into servo angles
             this->coxa = t1 * 180.0f / M_PI;
