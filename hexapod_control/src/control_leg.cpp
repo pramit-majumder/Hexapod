@@ -140,11 +140,15 @@ class control_leg : public rclcpp::Node
                 this->sampling = msg->sampling;
             }
 
+            float t1 = atan(msg->y/msg->x);
+            float target_y = std::abs((msg->y)/sin(t1));
+            RCLCPP_INFO(this->get_logger(), "target_y:%f sin(t1):%f msg->y:%f msg->y+coxa:%f msg->x:%f t1:%f", target_y, sin(t1) * 180.0f / M_PI, msg->y, msg->y+this->coxa, msg->x, sin(t1));
+
             // Distance from the femur joint to the target foot position
-            double c = hypot(msg->z - 0, msg->y);
+            double c = hypot(msg->z - 0, target_y);
 
             // Calculate the angles required for the leg geometry
-            float alpha = atan2(-msg->z, msg->y) * 180.0f / M_PI;
+            float alpha = atan2(-msg->z, target_y) * 180.0f / M_PI;
 
             float beta = (
                 acos(
@@ -170,20 +174,19 @@ class control_leg : public rclcpp::Node
             }
 
             // Coxa angle
-            float t2 = beta + alpha;
+            // float t2 = beta + alpha;
 
-            float tx = 180 - std::abs(t2);
-            float ty = 180 - (90 + tx);
-            float ta = 180 - std::abs(gamma) - std::abs(ty);
-            float e = std::abs((a * cos(ty)) + (b * cos(ta)));
-            float f = sqrt(((msg->x)*(msg->x))+((msg->y)*(msg->y)));
+            // float tx = 180 - std::abs(t2);
+            // float ty = 180 - (90 + tx);
+            // float ta = 180 - std::abs(gamma) - std::abs(ty);
+            // float e = std::abs((a * cos(ty)) + (b * cos(ta)));
+            // float f = sqrt(((msg->x)*(msg->x))+((msg->y)*(msg->y)));
 
-            RCLCPP_INFO(this->get_logger(), "%f %f %f %f", e, f, (this->coxa*this->coxa) + (e*e) - (f*f), ( 2 * this->coxa * e));
 
-            float t1 = (acos( ( (this->coxa*this->coxa) + (e*e) - (f*f) ) / ( 2 * this->coxa * e) )* 180.0f / M_PI) - 90.0f;      
+            // float t1 = (acos( ( (this->coxa*this->coxa) + (e*e) - (f*f) ) / ( 2 * this->coxa * e) )* 180.0f / M_PI) - 90.0f;      
 
             // IK angles into servo angles
-            this->coxa = t1;
+            this->coxa = t1 * 180.0f / M_PI;
 
             this->femur = std::clamp(
                 std::abs(alpha + beta + 90),
@@ -212,9 +215,9 @@ class control_leg : public rclcpp::Node
             RCLCPP_INFO(
                 this->get_logger(),
                 "Coxa, Femur, Tibia: %f, %f, %f",
-                this->coxa,
-                this->femur,
-                this->tibia
+                std::abs(this->coxa),
+                std::abs(this->femur),
+                std::abs(this->tibia)
             );
 
             time = 0;
