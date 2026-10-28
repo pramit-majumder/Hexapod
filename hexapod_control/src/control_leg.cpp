@@ -141,6 +141,11 @@ class control_leg : public rclcpp::Node
             const double gamma = acosd(((b * b) + (c * c) - (d * d)) / (2 * b * c));
         
             // ---- Servo angles ----
+            // ---- t2, t3 (same as MATLAB) ----
+            const double t2     = beta + alpha;
+            const double alpha2 = std::abs(90.0 - t2);
+            const double t3     = 180.0 - (90.0 - alpha2);
+
             // ASSUMPTION: keep your original mapping (femur = alpha + beta + 90, tibia = gamma).
             // Swap in t2 / t3 below if you want the MATLAB-style mapping instead.
             const double femur_deg = std::clamp(std::abs(alpha + beta + 90.0), 0.0, 180.0);
