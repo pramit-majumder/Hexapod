@@ -93,80 +93,78 @@ class control_leg : public rclcpp::Node
 
         void solver(const hexapod_interfaces::msg::Coordinates::SharedPtr msg){
 
-            // Save the current joint angles as the interpolation starting point
-            this->start = {this->coxa, this->femur, this->tibia};
-            if(msg->sampling != 0){
+            constexpr double R2D = 180.0 / M_PI;
+            auto sind  = [&](double deg) { return std::sin(deg / R2D); };
+            auto atand = [&](double v)   { return std::atan(v) * R2D; };
+            auto acosd = [&](double v)   { return std::acos(std::clamp(v, -1.0, 1.0)) * R2D; };
+        
+            const double a = this->coxa_l;
+            const double b = this->femur_l;
+            const double c = this->tibia_l;
+        
+            const double target_x = msg->x;
+            double target_y = msg->y;
+            const double target_z = -msg->z;   // positive DOWN; msg->z is UP
+        
+            // ---- Coxa ----
+            double t1 = std::atan2(target_y + a, target_x) * R2D;
+        
+            // Horizontal reach in the leg plane (guard against sin(t1) ~ 0)
+            const double s = sind(t1);
+            if (std::abs(s) > 1e-6) {
+                target_y = target_y / s;
+            } else {
+                target_y = std::abs(target_x);   // target lies along the x axis
+            }
+        
+            // ---- Femur / Tibia ----
+            const double d = std::sqrt(std::pow(target_y + a, 2) + std::pow(target_z, 2));
+        
+            // Reachability check
+            if (d > b + c || d < std::abs(b - c) || d < 1e-9) {
+                RCLCPP_WARN(this->get_logger(),
+                            "Target (%.1f, %.1f, %.1f) unreachable (d = %.1f, range %.1f..%.1f)",
+                            msg->x, msg->y, msg->z, d, std::abs(b - c), b + c);
+                return;   // keep the previous pose, don't touch start/end
+            }
+        
+            // Update sampling only once the target is accepted
+            if (msg->sampling != 0) {
                 this->sampling = msg->sampling;
             }
-
-
-            const double R2D = 180.0 / M_PI;
-            auto sind  = [&](double deg){ return std::sin(deg / R2D); };
-            auto atand = [&](double v)  { return std::atan(v) * R2D; };
-            auto acosd = [&](double v)  { return std::acos(v) * R2D; };
-         
-            double a = this->coxa_l;     // MATLAB a
-            double b = this->femur_l;    // MATLAB b
-            double c = this->tibia_l;    // MATLAB c
-            double target_x = msg->x;
-            double target_y = msg->y;
-            double target_z = -msg->z;   // MATLAB target_z is positive DOWN; msg->z is UP
-         
-            double t1 = std::atan2(target_y + a, target_x) * R2D;
-            target_y = (target_y) / sind(t1);
-            double d = std::sqrt(std::pow(target_y + a, 2) + std::pow(target_z, 2));
-            double alpha = std::abs(atand((target_y + a) / -target_z));
-            if (std::isnan(alpha)) {
-                alpha = 0;
-            }
-            double beta = acosd(((b * b) + (d * d) - (c * c)) / (2 * b * d));
-            if (std::isnan(beta)) {
-                beta = 0;
-            }
-            double gamma = acosd(((b * b) + (c * c) - (d * d)) / (2 * b * c));
-            double t2 = beta + alpha;
-            double t3 = 180 - (gamma);
-            double alpha2 = std::abs(90 - t2);
-            t3 = 180 - (90 - alpha2);
-
-
-            // IK angles into servo angles
-            this->coxa = t1 * 180.0f / M_PI;
-
-            this->femur = std::clamp(
-                std::abs(alpha + beta + 90),
-                0.0f,
-                180.0f
-            );
-
-            this->tibia = std::clamp(
-                std::abs(gamma),
-                0.0f,
-                180.0f
-            );
-
-            // Set the calculated angles as the interpolation target
+        
+            double alpha = (std::abs(target_z) > 1e-9)
+                               ? std::abs(atand((target_y + a) / -target_z))
+                               : 90.0;
+        
+            const double beta  = acosd(((b * b) + (d * d) - (c * c)) / (2 * b * d));
+            const double gamma = acosd(((b * b) + (c * c) - (d * d)) / (2 * b * c));
+        
+            // ---- Servo angles ----
+            // ASSUMPTION: keep your original mapping (femur = alpha + beta + 90, tibia = gamma).
+            // Swap in t2 / t3 below if you want the MATLAB-style mapping instead.
+            const double femur_deg = std::clamp(std::abs(alpha + beta + 90.0), 0.0, 180.0);
+            const double tibia_deg = std::clamp(std::abs(gamma),               0.0, 180.0);
+        
+            // Interpolation start = current angles, end = new target
+            this->start = {this->coxa, this->femur, this->tibia};
+        
+            this->coxa  = t1;          // already in degrees
+            this->femur = femur_deg;
+            this->tibia = tibia_deg;
+        
             this->end = {this->coxa, this->femur, this->tibia};
-
-            target_reached = false;
-
-            RCLCPP_INFO(
-                this->get_logger(),
-                "Started Interpolating at %d samples and at %d Time",
-                this->sampling,
-                this->milliss
-            );
-
-            RCLCPP_INFO(
-                this->get_logger(),
-                "Coxa, Femur, Tibia: %f, %f, %f",
-                std::abs(this->coxa),
-                std::abs(this->femur),
-                std::abs(this->tibia)
-            );
-
-            time = 0;
-        }
+            this->target_reached = false;
+            this->time = 0;
+        
+            RCLCPP_INFO(this->get_logger(),
+                        "Started interpolating: %ld samples, %ld ms",
+                        static_cast<long>(this->sampling),
+                        static_cast<long>(this->milliss));
+            RCLCPP_INFO(this->get_logger(),
+                        "Coxa, Femur, Tibia: %.2f, %.2f, %.2f",
+                        this->coxa, this->femur, this->tibia);
+}
 
         rclcpp::TimerBase::SharedPtr timer;
 
