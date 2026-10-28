@@ -95,48 +95,40 @@ class control_leg : public rclcpp::Node
 
             // Save the current joint angles as the interpolation starting point
             this->start = {this->coxa, this->femur, this->tibia};
-
-            double a = this->femur_l;
-            double b = this->tibia_l;
-
             if(msg->sampling != 0){
                 this->sampling = msg->sampling;
             }
 
-            float t1 = atan2(msg->y,-msg->x);
-            float target_y = std::abs((msg->y)/sin(t1));
-            RCLCPP_INFO(this->get_logger(), "target_y:%f sin(t1):%f msg->y:%f msg->y+coxa:%f msg->x:%f t1:%f", target_y, sin(t1) * 180.0f / M_PI, msg->y, msg->y+this->coxa, msg->x, sin(t1));
 
-            // Distance from the femur joint to the target foot position
-            double c = hypot(msg->z - 0, target_y);
-
-            // Calculate the angles required for the leg geometry
-            float alpha = atan2(-msg->z, target_y) * 180.0f / M_PI;
-
-            float beta = (
-                acos(
-                    ((a * a) + (c * c) - (b * b)) /
-                    (2 * a * c)
-                )
-            ) * 180.0f / M_PI;
-
-            // Prevent invalid values when the target is unreachable
+            const double R2D = 180.0 / M_PI;
+            auto sind  = [&](double deg){ return std::sin(deg / R2D); };
+            auto atand = [&](double v)  { return std::atan(v) * R2D; };
+            auto acosd = [&](double v)  { return std::acos(v) * R2D; };
+         
+            double a = this->coxa_l;     // MATLAB a
+            double b = this->femur_l;    // MATLAB b
+            double c = this->tibia_l;    // MATLAB c
+            double target_x = msg->x;
+            double target_y = msg->y;
+            double target_z = -msg->z;   // MATLAB target_z is positive DOWN; msg->z is UP
+         
+            double t1 = std::atan2(target_y + a, target_x) * R2D;
+            target_y = (target_y) / sind(t1);
+            double d = std::sqrt(std::pow(target_y + a, 2) + std::pow(target_z, 2));
+            double alpha = std::abs(atand((target_y + a) / -target_z));
+            if (std::isnan(alpha)) {
+                alpha = 0;
+            }
+            double beta = acosd(((b * b) + (d * d) - (c * c)) / (2 * b * d));
             if (std::isnan(beta)) {
-                beta = 90.0f;
+                beta = 0;
             }
+            double gamma = acosd(((b * b) + (c * c) - (d * d)) / (2 * b * c));
+            double t2 = beta + alpha;
+            double t3 = 180 - (gamma);
+            double alpha2 = std::abs(90 - t2);
+            t3 = 180 - (90 - alpha2);
 
-            float gamma = (
-                acos(
-                    ((a * a) + (b * b) - (c * c)) /
-                    (2 * a * b)
-                )
-            ) * 180.0f / M_PI;
-
-            if (std::isnan(gamma)) {
-                gamma = 90.0f;
-            }
-
-            // Coxa angle
 
             // IK angles into servo angles
             this->coxa = t1 * 180.0f / M_PI;
