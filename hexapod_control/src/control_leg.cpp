@@ -118,7 +118,7 @@ class control_leg : public rclcpp::Node
             }
         
             // ---- Femur / Tibia ----
-            const double d = std::sqrt(std::pow(target_y + a, 2) + std::pow(target_z, 2));
+            const double d = std::sqrt(std::pow(target_y, 2) + std::pow(target_z, 2));
         
             // Reachability check
             if (d > b + c || d < std::abs(b - c) || d < 1e-9) {
@@ -134,7 +134,7 @@ class control_leg : public rclcpp::Node
             }
         
             double alpha = (std::abs(target_z) > 1e-9)
-                               ? std::abs(atand((target_y + a) / -target_z))
+                               ? std::abs(atand((target_y) / -target_z))
                                : 90.0;
         
             const double beta  = acosd(((b * b) + (d * d) - (c * c)) / (2 * b * d));
@@ -143,13 +143,17 @@ class control_leg : public rclcpp::Node
             // ---- Servo angles ----
             // ---- t2, t3 (same as MATLAB) ----
             const double t2     = beta + alpha;
-            const double alpha2 = std::abs(90.0 - t2);
-            const double t3     = 180.0 - (90.0 - alpha2);
-
+            if(t2 >= 90){
+                const double alpha2 = std::abs(90.0 - t2);
+                t3 = 180.0 - (90.0 - alpha2);
+            }
+            else{
+                t3 = 180 - gamma;
+            }
             // ASSUMPTION: keep your original mapping (femur = alpha + beta + 90, tibia = gamma).
             // Swap in t2 / t3 below if you want the MATLAB-style mapping instead.
-            const double femur_deg = std::clamp(std::abs(alpha + beta + 90.0), 0.0, 180.0);
-            const double tibia_deg = std::clamp(std::abs(gamma),               0.0, 180.0);
+            const double femur_deg = std::clamp(std::abs(t2), 0.0, 180.0);
+            const double tibia_deg = std::clamp(std::abs(t3),               0.0, 180.0);
         
             // Interpolation start = current angles, end = new target
             this->start = {this->coxa, this->femur, this->tibia};
@@ -184,7 +188,7 @@ class control_leg : public rclcpp::Node
         const int coxa_l = 50;
         const int femur_l = 75;
         const int tibia_l = 112.256;
-
+        double t3 = 0;     
         bool target_reached = true;
 
         // Current interpolation step

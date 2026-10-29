@@ -27,10 +27,43 @@ class HexapodNode(Node):
 
         self.leg6 = self.create_subscription(LegActuators, "leg6", self.on_leg6, 10)
 
+        self.leg = self.create_subscription(LegActuators, "leg", self.on_leg, 10)
+
+    def on_leg(self, msg):
+        coxa = (msg.coxa - 90) * math.pi / 180
+        femur = (msg.femur - 90) * math.pi / 180
+        tibia = (180 - msg.tibia - 90) * math.pi / 180
+        if self.target is not None:
+            self.target[0] = coxa
+            self.target[1] = femur
+            self.target[2] = tibia
+            
+            self.target[3] = coxa
+            self.target[4] = femur
+            self.target[5] = tibia
+                        
+            self.target[6] = coxa
+            self.target[7] = femur
+            self.target[8] = tibia
+            
+            self.target[9] = coxa
+            self.target[10] = femur
+            self.target[11] = tibia
+            
+            self.target[12] = coxa
+            self.target[13] = femur
+            self.target[14] = tibia
+
+            self.target[15] = coxa
+            self.target[16] = femur
+            self.target[17] = tibia
+                                             
+        self.get_logger().info(f"Leg1:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
+
     def on_leg1(self, msg):
         coxa = (msg.coxa - 90) * math.pi / 180
         femur = (msg.femur - 90) * math.pi / 180
-        tibia = (msg.tibia - 90) * math.pi / 180
+        tibia = (180 - msg.tibia - 90) * math.pi / 180
         if self.target is not None:
             self.target[0] = coxa
             self.target[1] = femur

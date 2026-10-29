@@ -63,7 +63,7 @@
   <worldbody>
     <!-- euler 90deg about X converts the Y-up CAD frame to Z-up; pos z is the drop height -->
     <body name="rotate_root" pos="0 0 0.6" euler="1.5708 0 0">
-      <freejoint name="root_free"/>
+      <!-- <freejoint name="root_free"/> -->
       <inertial pos="0 0 0" mass="2.0" diaginertia="0.02 0.02 0.02"/>
       <site name="imu_site" pos="0 0.06 -0.6" size="0.01"/>
       <geom type="mesh" mesh="base_link"/>
