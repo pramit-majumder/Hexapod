@@ -7,6 +7,43 @@
 #include <thread>
 #include <algorithm>
 
+
+// a = 50;
+// b = 75;
+// c = 112;
+// theta1 = 0;
+
+// target_x = 150;
+// target_y = 75 + a;
+// target_z = 112;
+//hehehaw
+// t1 = atand(target_y/target_x)
+// target_y = (target_y - a)/sind(t1)
+
+// d = sqrt((target_y)^2 + (target_z)^2);
+
+// alpha = abs(atand((target_y)/-target_z));
+
+// if isnan(alpha)
+//     alpha = 0;
+// end
+// beta = acosd( ((b*b) + (d^2) - (c^2)) / (2*b*d));
+
+// if isnan(beta)
+//     beta = 0;
+// end
+
+// gamma = acosd( ((b^2) + (c^2) - (d^2)) / (2*b*c) );
+
+// t2 = beta + alpha
+// t3 = 180 - gamma
+
+// tx = 180 - abs(t2);
+// ty = 180 - (90 + tx);
+// ta = 180 - abs(gamma) - abs(ty);
+
+
+
 using namespace std;
 using namespace std::placeholders;
 
@@ -93,87 +130,98 @@ class control_leg : public rclcpp::Node
 
         void solver(const hexapod_interfaces::msg::Coordinates::SharedPtr msg){
 
-            constexpr double R2D = 180.0 / M_PI;
-            auto sind  = [&](double deg) { return std::sin(deg / R2D); };
-            auto atand = [&](double v)   { return std::atan(v) * R2D; };
-            auto acosd = [&](double v)   { return std::acos(std::clamp(v, -1.0, 1.0)) * R2D; };
-        
-            const double a = this->coxa_l;
-            const double b = this->femur_l;
-            const double c = this->tibia_l;
-        
-            const double target_x = msg->x;
-            double target_y = msg->y;
-            const double target_z = -msg->z;   // positive DOWN; msg->z is UP
-        
-            // ---- Coxa ----
-            double t1 = std::atan2(target_y + a, target_x) * R2D;
-        
-            // Horizontal reach in the leg plane (guard against sin(t1) ~ 0)
-            const double s = sind(t1);
-            if (std::abs(s) > 1e-6) {
-                target_y = target_y / s;
-            } else {
-                target_y = std::abs(target_x);   // target lies along the x axis
-            }
-        
-            // ---- Femur / Tibia ----
-            const double d = std::sqrt(std::pow(target_y, 2) + std::pow(target_z, 2));
-        
-            // Reachability check
-            if (d > b + c || d < std::abs(b - c) || d < 1e-9) {
-                RCLCPP_WARN(this->get_logger(),
-                            "Target (%.1f, %.1f, %.1f) unreachable (d = %.1f, range %.1f..%.1f)",
-                            msg->x, msg->y, msg->z, d, std::abs(b - c), b + c);
-                return;   // keep the previous pose, don't touch start/end
-            }
-        
-            // Update sampling only once the target is accepted
-            if (msg->sampling != 0) {
+            // Save the current joint angles as the interpolation starting point
+            this->start = {this->coxa, this->femur, this->tibia};
+
+            double a = this->femur_l;
+            double b = this->tibia_l;
+
+            if(msg->sampling != 0){
                 this->sampling = msg->sampling;
             }
-        
-            double alpha = (std::abs(target_z) > 1e-9)
-                               ? std::abs(atand((target_y) / -target_z))
-                               : 90.0;
-        
-            const double beta  = acosd(((b * b) + (d * d) - (c * c)) / (2 * b * d));
-            const double gamma = acosd(((b * b) + (c * c) - (d * d)) / (2 * b * c));
-        
-            // ---- Servo angles ----
-            // ---- t2, t3 (same as MATLAB) ----
-            const double t2     = beta + alpha;
-            if(t2 >= 90){
-                const double alpha2 = std::abs(90.0 - t2);
-                t3 = 180.0 - (90.0 - alpha2);
+
+            float t1 = atan2(msg->y,-msg->x);
+            float target_y = std::abs((msg->y)/sin(t1));
+            RCLCPP_INFO(this->get_logger(), "target_y:%f sin(t1):%f msg->y:%f msg->y+coxa:%f msg->x:%f t1:%f", target_y, sin(t1) * 180.0f / M_PI, msg->y, msg->y+this->coxa, msg->x, sin(t1));
+
+            // Distance from the femur joint to the target foot position
+            double c = hypot(msg->z - 0, target_y);
+
+            // Calculate the angles required for the leg geometry
+            float alpha = atan2(-msg->z, target_y) * 180.0f / M_PI;
+
+            float beta = (
+                acos(
+                    ((a * a) + (c * c) - (b * b)) /
+                    (2 * a * c)
+                )
+            ) * 180.0f / M_PI;
+
+            // Prevent invalid values when the target is unreachable
+            if (std::isnan(beta)) {
+                beta = 90.0f;
             }
-            else{
-                t3 = 180 - gamma;
+
+            float gamma = (
+                acos(
+                    ((a * a) + (b * b) - (c * c)) /
+                    (2 * a * b)
+                )
+            ) * 180.0f / M_PI;
+
+            if (std::isnan(gamma)) {
+                gamma = 90.0f;
             }
-            // ASSUMPTION: keep your original mapping (femur = alpha + beta + 90, tibia = gamma).
-            // Swap in t2 / t3 below if you want the MATLAB-style mapping instead.
-            const double femur_deg = std::clamp(std::abs(t2), 0.0, 180.0);
-            const double tibia_deg = std::clamp(std::abs(t3),               0.0, 180.0);
-        
-            // Interpolation start = current angles, end = new target
-            this->start = {this->coxa, this->femur, this->tibia};
-        
-            this->coxa  = t1;          // already in degrees
-            this->femur = femur_deg;
-            this->tibia = tibia_deg;
-        
+
+            // Coxa angle
+            // float t2 = beta + alpha;
+
+            // float tx = 180 - std::abs(t2);
+            // float ty = 180 - (90 + tx);
+            // float ta = 180 - std::abs(gamma) - std::abs(ty);
+            // float e = std::abs((a * cos(ty)) + (b * cos(ta)));
+            // float f = sqrt(((msg->x)*(msg->x))+((msg->y)*(msg->y)));
+
+
+            // float t1 = (acos( ( (this->coxa*this->coxa) + (e*e) - (f*f) ) / ( 2 * this->coxa * e) )* 180.0f / M_PI) - 90.0f;      
+
+            // IK angles into servo angles
+            this->coxa = t1 * 180.0f / M_PI;
+
+            this->femur = std::clamp(
+                std::abs(alpha + beta + 90),
+                0.0f,
+                180.0f
+            );
+
+            this->tibia = std::clamp(
+                std::abs(gamma),
+                0.0f,
+                180.0f
+            );
+
+            // Set the calculated angles as the interpolation target
             this->end = {this->coxa, this->femur, this->tibia};
-            this->target_reached = false;
-            this->time = 0;
-        
-            RCLCPP_INFO(this->get_logger(),
-                        "Started interpolating: %ld samples, %ld ms",
-                        static_cast<long>(this->sampling),
-                        static_cast<long>(this->milliss));
-            RCLCPP_INFO(this->get_logger(),
-                        "Coxa, Femur, Tibia: %.2f, %.2f, %.2f",
-                        this->coxa, this->femur, this->tibia);
-}
+
+            target_reached = false;
+
+            RCLCPP_INFO(
+                this->get_logger(),
+                "Started Interpolating at %d samples and at %d Time",
+                this->sampling,
+                this->milliss
+            );
+
+            RCLCPP_INFO(
+                this->get_logger(),
+                "Coxa, Femur, Tibia: %f, %f, %f",
+                std::abs(this->coxa),
+                std::abs(this->femur),
+                std::abs(this->tibia)
+            );
+
+            time = 0;
+        }
 
         rclcpp::TimerBase::SharedPtr timer;
 
@@ -188,7 +236,7 @@ class control_leg : public rclcpp::Node
         const int coxa_l = 50;
         const int femur_l = 75;
         const int tibia_l = 112.256;
-        double t3 = 0;     
+
         bool target_reached = true;
 
         // Current interpolation step

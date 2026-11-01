@@ -63,7 +63,7 @@ class HexapodNode(Node):
     def on_leg1(self, msg):
         coxa = (msg.coxa - 90) * math.pi / 180
         femur = (msg.femur - 90) * math.pi / 180
-        tibia = (180 - msg.tibia - 90) * math.pi / 180
+        tibia = (msg.tibia - 90) * math.pi / 180
         if self.target is not None:
             self.target[0] = coxa
             self.target[1] = femur
