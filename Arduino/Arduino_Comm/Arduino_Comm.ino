@@ -1,36 +1,44 @@
 #include <Wire.h>
 #include <Adafruit_PWMServoDriver.h>
-#include <Servo.h>
 
-#define ECHO_ENABLED 1   // 1 = Arduino echoes what it executed, 0 = silent (use 0 for walking)
+#define ECHO_ENABLED 1   // 1 = echo executed commands, 0 = silent (use 0 for walking)
 
-Servo servo2;
-Servo servo3;
-
-Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40);
+Adafruit_PWMServoDriver pwm1 = Adafruit_PWMServoDriver(0x40);
+Adafruit_PWMServoDriver pwm2 = Adafruit_PWMServoDriver(0x41);
 
 #define SERVOMIN 150
 #define SERVOMAX 600
 
-// {coxa, femur, tibia} PCA9685 channels for legs 1-5.
-// Leg 6 is handled separately: coxa on PCA channel 15, femur on pin 8, tibia on pin 7.
-const uint8_t LEG_CH[5][3] = {
-  {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {9, 10, 11}, {12, 13, 14}
+// {board (1 or 2), coxa, femur, tibia} for legs 1-6
+const uint8_t LEG_CH[6][4] = {
+  {1, 13, 14, 15},  // leg 1
+  {1,  6,  7,  5},  // leg 2
+  {1,  2,  1,  0},  // leg 3
+  {2,  2,  1,  0},  // leg 4
+  {2,  7,  8,  9},  // leg 5
+  {2, 13, 14, 15}   // leg 6
 };
 
-void setServoAngle(uint8_t channel, int angle) {
+void setServoAngle(Adafrxuit_PWMServoDriver &pwm, uint8_t channel, int angle) {
   angle = constrain(angle, 0, 180);
   int pulse = map(angle, 0, 180, SERVOMIN, SERVOMAX);
   pwm.setPWM(channel, 0, pulse);
 }
 
 void moveLeg(int leg, int coxa, int femur, int tibia) {
+  if (leg < 1 || leg > 6) {
+#if ECHO_ENABLED
+    Serial.print("ERR bad leg ");
+    Serial.println(leg);
+#endif
+    return;
+  }
+
   coxa  = constrain(coxa, 0, 180);
   femur = constrain(femur, 0, 180);
   tibia = constrain(tibia, 0, 180);
 
 #if ECHO_ENABLED
-  // Echo the clamped values, before the tibia inversion
   Serial.print("OK ");
   Serial.print(leg);   Serial.print(';');
   Serial.print(coxa);  Serial.print(';');
@@ -38,64 +46,91 @@ void moveLeg(int leg, int coxa, int femur, int tibia) {
   Serial.println(tibia);
 #endif
 
-  tibia = map(tibia, 0, 180, 180, 0);  // existing tibia inversion
+  tibia = 180 - tibia;  // existing tibia inversion
 
-  if (leg >= 1 && leg <= 5) {
-    const uint8_t* ch = LEG_CH[leg - 1];
-    setServoAngle(ch[0], coxa);
-    setServoAngle(ch[1], femur);
-    setServoAngle(ch[2], tibia);
-  } else if (leg == 6) {
-    setServoAngle(15, coxa);
-    servo2.write(femur);
-    servo3.write(tibia);
-  } else {
-#if ECHO_ENABLED
-    Serial.print("ERR bad leg ");
-    Serial.println(leg);
-#endif
+  const uint8_t* ch = LEG_CH[leg - 1];
+  Adafruit_PWMServoDriver &pwm = (ch[0] == 1) ? pwm1 : pwm2;
+  setServoAngle(pwm, ch[1], coxa);
+  setServoAngle(pwm, ch[2], femur);
+  setServoAngle(pwm, ch[3], tibia);
+}
+
+// Parses "leg;coxa;femur;tibia". Returns false if malformed.
+bool parseCommand(char* s, int &leg, int &coxa, int &femur, int &tibia) {
+  int vals[4];
+  for (int i = 0; i < 4; i++) {
+    char* end;
+    long v = strtol(s, &end, 10);
+    if (end == s) return false;                 // no digits
+    vals[i] = (int)v;
+    if (i < 3) {
+      if (*end != ';') return false;
+      s = end + 1;
+    } else if (*end != '\0') {
+      return false;                             // trailing junk
+    }
   }
+  leg = vals[0]; coxa = vals[1]; femur = vals[2]; tibia = vals[3];
+  return true;
 }
 
 void setup() {
   Serial.begin(115200);
-  Serial.setTimeout(5);  // don't block ~1 s on a partial line
   Wire.begin();
-  pwm.begin();
-  pwm.setOscillatorFrequency(27000000);
-  pwm.setPWMFreq(50);
-  delay(500);
-  while (!Serial) {}
-  while (Serial.available() > 0) Serial.read();
+  Wire.setClock(400000);
 
-  servo2.attach(8);
-  servo3.attach(7);
+  pwm1.begin();
+  pwm2.begin();
+  pwm1.setOscillatorFrequency(27000000);
+  pwm2.setOscillatorFrequency(27000000);
+  pwm1.setPWMFreq(50);
+  pwm2.setPWMFreq(50);
+
   pinMode(LED_BUILTIN, OUTPUT);
+
+  // Blink 3x if either PCA9685 doesn't respond on I2C
+  Wire.beginTransmission(0x40); bool ok1 = (Wire.endTransmission() == 0);
+  Wire.beginTransmission(0x41); bool ok2 = (Wire.endTransmission() == 0);
+  if (!ok1 || !ok2) {
+    for (int i = 0; i < 3; i++) {
+      digitalWrite(LED_BUILTIN, HIGH); delay(200);
+      digitalWrite(LED_BUILTIN, LOW);  delay(200);
+    }
+  }
+
+  unsigned long t0 = millis();
+  while (!Serial && millis() - t0 < 2000) {}
+  delay(500);
+  while (Serial.available() > 0) Serial.read();
 }
 
 void loop() {
-  if (Serial.available() > 0) {
-    String cmd = Serial.readStringUntil('\n');
-    cmd.trim();
-    if (cmd.length() == 0) return;
+  static char buf[48];
+  static uint8_t len = 0;
 
-    // Expected format: leg;coxa;femur;tibia  (e.g. "1;90;45;120")
-    int s1 = cmd.indexOf(';');
-    int s2 = cmd.indexOf(';', s1 + 1);
-    int s3 = cmd.indexOf(';', s2 + 1);
-    if (s1 == -1 || s2 == -1 || s3 == -1) {
+  while (Serial.available() > 0) {
+    char c = (char)Serial.read();
+
+    if (c == '\r') continue;
+
+    if (c == '\n') {
+      buf[len] = '\0';
+      if (len > 0) {
+        int leg, coxa, femur, tibia;
+        if (parseCommand(buf, leg, coxa, femur, tibia)) {
+          moveLeg(leg, coxa, femur, tibia);
+        } else {
 #if ECHO_ENABLED
-      Serial.print("ERR ");
-      Serial.println(cmd);
+          Serial.print("ERR ");
+          Serial.println(buf);
 #endif
-      return;
+        }
+      }
+      len = 0;
+    } else if (len < sizeof(buf) - 1) {
+      buf[len++] = c;
+    } else {
+      len = 0;  // overlong line: discard
     }
-
-    int leg   = cmd.substring(0, s1).toInt();
-    int coxa  = cmd.substring(s1 + 1, s2).toInt();
-    int femur = cmd.substring(s2 + 1, s3).toInt();
-    int tibia = cmd.substring(s3 + 1).toInt();
-
-    moveLeg(leg, coxa, femur, tibia);
   }
 }
