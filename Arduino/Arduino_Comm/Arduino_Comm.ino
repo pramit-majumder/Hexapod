@@ -11,15 +11,15 @@ Adafruit_PWMServoDriver pwm2 = Adafruit_PWMServoDriver(0x41);
 
 // {board (1 or 2), coxa, femur, tibia} for legs 1-6
 const uint8_t LEG_CH[6][4] = {
-  {1, 13, 14, 15},  // leg 1
-  {1,  6,  7,  5},  // leg 2
-  {1,  2,  1,  0},  // leg 3
-  {2,  2,  1,  0},  // leg 4
-  {2,  7,  8,  9},  // leg 5
-  {2, 13, 14, 15}   // leg 6
+  {2, 13, 14, 15},  // leg 1
+  {2,  9,  8,  7},  // leg 2
+  {2,  2,  1,  0},  // leg 3
+  {1,  2,  1,  0},  // leg 4
+  {1,  4,  6,  5},  // leg 5
+  {1, 13, 14, 15}   // leg 6
 };
 
-void setServoAngle(Adafrxuit_PWMServoDriver &pwm, uint8_t channel, int angle) {
+void setServoAngle(Adafruit_PWMServoDriver &pwm, uint8_t channel, int angle) {
   angle = constrain(angle, 0, 180);
   int pulse = map(angle, 0, 180, SERVOMIN, SERVOMAX);
   pwm.setPWM(channel, 0, pulse);
