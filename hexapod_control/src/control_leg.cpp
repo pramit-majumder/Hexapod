@@ -246,7 +246,7 @@ class control_leg : public rclcpp::Node
         Point3d end;
 
         // 60 interpolation steps, each 10 ms apart
-        int sampling = 60;
+        int sampling = 120;
         int milliss = 10;
 
         rclcpp::Publisher<hexapod_interfaces::msg::LegActuators>::SharedPtr leg;
