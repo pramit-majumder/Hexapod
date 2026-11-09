@@ -60,7 +60,7 @@ class HexapodNode(Node):
                                              
         self.get_logger().info(f"Leg1:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
 
-    def on_leg1(self, msg):
+    def on_leg4(self, msg):
         coxa = (msg.coxa - 90) * math.pi / 180
         femur = (msg.femur - 90) * math.pi / 180
         tibia = (msg.tibia - 90) * math.pi / 180
@@ -80,7 +80,7 @@ class HexapodNode(Node):
             self.target[5] = tibia
         self.get_logger().info(f"Leg2:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
 
-    def on_leg3(self, msg):
+    def on_leg6(self, msg):
         coxa = (msg.coxa - 90) * math.pi / 180
         femur = (msg.femur - 90) * math.pi / 180
         tibia = (msg.tibia - 90) * math.pi / 180
@@ -90,7 +90,7 @@ class HexapodNode(Node):
             self.target[8] = tibia
         self.get_logger().info(f"Leg3:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
 
-    def on_leg4(self, msg):
+    def on_leg1(self, msg):
         coxa = (msg.coxa - 90) * math.pi / 180
         femur = (msg.femur - 90) * math.pi / 180
         tibia = (msg.tibia - 90) * math.pi / 180
@@ -110,7 +110,7 @@ class HexapodNode(Node):
             self.target[14] = tibia
         self.get_logger().info(f"Leg5:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
     
-    def on_leg6(self, msg):
+    def on_leg3(self, msg):
         coxa = (msg.coxa - 90) * math.pi / 180
         femur = (msg.femur - 90) * math.pi / 180
         tibia = (msg.tibia - 90) * math.pi / 180
