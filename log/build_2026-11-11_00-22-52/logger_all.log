@@ -1,0 +1,157 @@
+[0.860s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'hexapod_control']
+[0.861s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['hexapod_control'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x73af64ea3760>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x73af64ea30d0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x73af64ea30d0>>, mixin_verb=('build',))
+[2.094s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[2.094s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[2.095s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[2.095s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[2.095s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[2.095s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[2.095s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/waves/hexapod/src'
+[2.095s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[2.096s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[2.096s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[2.096s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[2.096s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[2.096s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[2.096s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[2.096s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[2.096s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[2.161s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[2.162s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[2.162s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[2.163s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[2.163s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[2.164s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extensions ['ignore', 'ignore_ament_install']
+[2.164s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extension 'ignore'
+[2.164s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extension 'ignore_ament_install'
+[2.164s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extensions ['colcon_pkg']
+[2.165s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extension 'colcon_pkg'
+[2.165s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extensions ['colcon_meta']
+[2.165s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extension 'colcon_meta'
+[2.165s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extensions ['ros']
+[2.165s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extension 'ros'
+[2.174s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extensions ['cmake', 'python']
+[2.174s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extension 'cmake'
+[2.174s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extension 'python'
+[2.175s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extensions ['python_setup_py']
+[2.175s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino) by extension 'python_setup_py'
+[2.176s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extensions ['ignore', 'ignore_ament_install']
+[2.176s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extension 'ignore'
+[2.176s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extension 'ignore_ament_install'
+[2.176s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extensions ['colcon_pkg']
+[2.176s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extension 'colcon_pkg'
+[2.177s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extensions ['colcon_meta']
+[2.177s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extension 'colcon_meta'
+[2.177s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extensions ['ros']
+[2.177s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extension 'ros'
+[2.177s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extensions ['cmake', 'python']
+[2.177s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extension 'cmake'
+[2.177s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extension 'python'
+[2.178s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extensions ['python_setup_py']
+[2.178s] Level 1:colcon.colcon_core.package_identification:_identify(Arduino/Arduino_Comm) by extension 'python_setup_py'
+[2.178s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extensions ['ignore', 'ignore_ament_install']
+[2.179s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extension 'ignore'
+[2.179s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extension 'ignore_ament_install'
+[2.179s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extensions ['colcon_pkg']
+[2.180s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extension 'colcon_pkg'
+[2.180s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extensions ['colcon_meta']
+[2.181s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extension 'colcon_meta'
+[2.182s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extensions ['ros']
+[2.182s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extension 'ros'
+[2.183s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extensions ['cmake', 'python']
+[2.183s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extension 'cmake'
+[2.183s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extension 'python'
+[2.183s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extensions ['python_setup_py']
+[2.183s] Level 1:colcon.colcon_core.package_identification:_identify(Windows) by extension 'python_setup_py'
+[2.183s] Level 1:colcon.colcon_core.package_identification:_identify(Windows/Hexapod_description) by extensions ['ignore', 'ignore_ament_install']
+[2.184s] Level 1:colcon.colcon_core.package_identification:_identify(Windows/Hexapod_description) by extension 'ignore'
+[2.184s] Level 1:colcon.colcon_core.package_identification:_identify(Windows/Hexapod_description) by extension 'ignore_ament_install'
+[2.184s] Level 1:colcon.colcon_core.package_identification:_identify(Windows/Hexapod_description) by extensions ['colcon_pkg']
+[2.184s] Level 1:colcon.colcon_core.package_identification:_identify(Windows/Hexapod_description) by extension 'colcon_pkg'
+[2.184s] Level 1:colcon.colcon_core.package_identification:_identify(Windows/Hexapod_description) by extensions ['colcon_meta']
+[2.185s] Level 1:colcon.colcon_core.package_identification:_identify(Windows/Hexapod_description) by extension 'colcon_meta'
+[2.185s] Level 1:colcon.colcon_core.package_identification:_identify(Windows/Hexapod_description) by extensions ['ros']
+[2.185s] Level 1:colcon.colcon_core.package_identification:_identify(Windows/Hexapod_description) by extension 'ros'
+[2.198s] DEBUG:colcon.colcon_core.package_identification:Package 'Windows/Hexapod_description' with type 'ros.catkin' and name 'Hexapod_description'
+[2.198s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[2.198s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[2.198s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[2.199s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_communication) by extensions ['ignore', 'ignore_ament_install']
+[2.199s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_communication) by extension 'ignore'
+[2.199s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_communication) by extension 'ignore_ament_install'
+[2.199s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_communication) by extensions ['colcon_pkg']
+[2.200s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_communication) by extension 'colcon_pkg'
+[2.200s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_communication) by extensions ['colcon_meta']
+[2.200s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_communication) by extension 'colcon_meta'
+[2.200s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_communication) by extensions ['ros']
+[2.200s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_communication) by extension 'ros'
+[2.202s] DEBUG:colcon.colcon_core.package_identification:Package 'hexapod_communication' with type 'ros.ament_python' and name 'hexapod_communication'
+[2.202s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_control) by extensions ['ignore', 'ignore_ament_install']
+[2.202s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_control) by extension 'ignore'
+[2.203s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_control) by extension 'ignore_ament_install'
+[2.203s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_control) by extensions ['colcon_pkg']
+[2.204s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_control) by extension 'colcon_pkg'
+[2.204s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_control) by extensions ['colcon_meta']
+[2.204s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_control) by extension 'colcon_meta'
+[2.204s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_control) by extensions ['ros']
+[2.204s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_control) by extension 'ros'
+[2.207s] DEBUG:colcon.colcon_core.package_identification:Package 'hexapod_control' with type 'ros.ament_cmake' and name 'hexapod_control'
+[2.208s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[2.209s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_interfaces) by extension 'ignore'
+[2.209s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_interfaces) by extension 'ignore_ament_install'
+[2.209s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_interfaces) by extensions ['colcon_pkg']
+[2.209s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_interfaces) by extension 'colcon_pkg'
+[2.210s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_interfaces) by extensions ['colcon_meta']
+[2.210s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_interfaces) by extension 'colcon_meta'
+[2.212s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_interfaces) by extensions ['ros']
+[2.215s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_interfaces) by extension 'ros'
+[2.218s] DEBUG:colcon.colcon_core.package_identification:Package 'hexapod_interfaces' with type 'ros.ament_cmake' and name 'hexapod_interfaces'
+[2.219s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_launch) by extensions ['ignore', 'ignore_ament_install']
+[2.219s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_launch) by extension 'ignore'
+[2.219s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_launch) by extension 'ignore_ament_install'
+[2.219s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_launch) by extensions ['colcon_pkg']
+[2.219s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_launch) by extension 'colcon_pkg'
+[2.219s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_launch) by extensions ['colcon_meta']
+[2.219s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_launch) by extension 'colcon_meta'
+[2.220s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_launch) by extensions ['ros']
+[2.220s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_launch) by extension 'ros'
+[2.221s] DEBUG:colcon.colcon_core.package_identification:Package 'hexapod_launch' with type 'ros.ament_cmake' and name 'hexapod_launch'
+[2.221s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_services) by extensions ['ignore', 'ignore_ament_install']
+[2.221s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_services) by extension 'ignore'
+[2.222s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_services) by extension 'ignore_ament_install'
+[2.222s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_services) by extensions ['colcon_pkg']
+[2.223s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_services) by extension 'colcon_pkg'
+[2.224s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_services) by extensions ['colcon_meta']
+[2.225s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_services) by extension 'colcon_meta'
+[2.225s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_services) by extensions ['ros']
+[2.225s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_services) by extension 'ros'
+[2.229s] DEBUG:colcon.colcon_core.package_identification:Package 'hexapod_services' with type 'ros.ament_cmake' and name 'hexapod_services'
+[2.229s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_sim) by extensions ['ignore', 'ignore_ament_install']
+[2.229s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_sim) by extension 'ignore'
+[2.230s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_sim) by extension 'ignore_ament_install'
+[2.231s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_sim) by extensions ['colcon_pkg']
+[2.232s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_sim) by extension 'colcon_pkg'
+[2.233s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_sim) by extensions ['colcon_meta']
+[2.233s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_sim) by extension 'colcon_meta'
+[2.233s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_sim) by extensions ['ros']
+[2.233s] Level 1:colcon.colcon_core.package_identification:_identify(hexapod_sim) by extension 'ros'
+[2.235s] DEBUG:colcon.colcon_core.package_identification:Package 'hexapod_sim' with type 'ros.ament_python' and name 'hexapod_sim'
+[2.236s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[2.236s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[2.236s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[2.237s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[2.237s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[2.237s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[2.238s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[2.238s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[2.238s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[2.238s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[2.238s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[2.466s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'Hexapod_description' in 'Windows/Hexapod_description'
+[2.467s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'hexapod_communication' in 'hexapod_communication'
+[2.467s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'hexapod_interfaces' in 'hexapod_interfaces'
+[2.467s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'hexapod_launch' in 'hexapod_launch'
+[2.467s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'hexapod_sim' in 'hexapod_sim'
+[2.467s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'hexapod_services' in 'hexapod_services'
+[2.469s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[2.470s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover

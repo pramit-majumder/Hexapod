@@ -1,0 +1,37 @@
+[5.270s] Invoking command in '/home/waves/hexapod/src/hexapod_sim': PYTHONPATH=/home/waves/hexapod/src/build/hexapod_sim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/hexapod_sim build --build-base /home/waves/hexapod/src/build/hexapod_sim/build install --record /home/waves/hexapod/src/build/hexapod_sim/install.log --install-scripts $base/lib/hexapod_sim --single-version-externally-managed install_data
+[7.307s] running egg_info
+[7.310s] creating ../build/hexapod_sim/hexapod_sim.egg-info
+[7.310s] writing ../build/hexapod_sim/hexapod_sim.egg-info/PKG-INFO
+[7.311s] writing dependency_links to ../build/hexapod_sim/hexapod_sim.egg-info/dependency_links.txt
+[7.311s] writing entry points to ../build/hexapod_sim/hexapod_sim.egg-info/entry_points.txt
+[7.311s] writing requirements to ../build/hexapod_sim/hexapod_sim.egg-info/requires.txt
+[7.311s] writing top-level names to ../build/hexapod_sim/hexapod_sim.egg-info/top_level.txt
+[7.311s] writing manifest file '../build/hexapod_sim/hexapod_sim.egg-info/SOURCES.txt'
+[7.316s] reading manifest file '../build/hexapod_sim/hexapod_sim.egg-info/SOURCES.txt'
+[7.317s] writing manifest file '../build/hexapod_sim/hexapod_sim.egg-info/SOURCES.txt'
+[7.318s] running build
+[7.319s] running build_py
+[7.320s] creating /home/waves/hexapod/src/build/hexapod_sim/build
+[7.320s] creating /home/waves/hexapod/src/build/hexapod_sim/build/lib
+[7.321s] creating /home/waves/hexapod/src/build/hexapod_sim/build/lib/hexapod_sim
+[7.322s] copying hexapod_sim/communication.py -> /home/waves/hexapod/src/build/hexapod_sim/build/lib/hexapod_sim
+[7.323s] copying hexapod_sim/__init__.py -> /home/waves/hexapod/src/build/hexapod_sim/build/lib/hexapod_sim
+[7.323s] running install
+[7.323s] running install_lib
+[7.331s] creating /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim
+[7.332s] copying /home/waves/hexapod/src/build/hexapod_sim/build/lib/hexapod_sim/communication.py -> /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim
+[7.333s] copying /home/waves/hexapod/src/build/hexapod_sim/build/lib/hexapod_sim/__init__.py -> /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim
+[7.352s] byte-compiling /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim/communication.py to communication.cpython-310.pyc
+[7.353s] byte-compiling /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim/__init__.py to __init__.cpython-310.pyc
+[7.353s] running install_data
+[7.353s] creating /home/waves/hexapod/src/install/hexapod_sim/share/ament_index
+[7.353s] creating /home/waves/hexapod/src/install/hexapod_sim/share/ament_index/resource_index
+[7.353s] creating /home/waves/hexapod/src/install/hexapod_sim/share/ament_index/resource_index/packages
+[7.353s] copying resource/hexapod_sim -> /home/waves/hexapod/src/install/hexapod_sim/share/ament_index/resource_index/packages
+[7.353s] copying package.xml -> /home/waves/hexapod/src/install/hexapod_sim/share/hexapod_sim
+[7.353s] running install_egg_info
+[7.372s] Copying ../build/hexapod_sim/hexapod_sim.egg-info to /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim-0.0.0-py3.10.egg-info
+[7.377s] running install_scripts
+[7.520s] Installing communication script to /home/waves/hexapod/src/install/hexapod_sim/lib/hexapod_sim
+[7.521s] writing list of installed files to '/home/waves/hexapod/src/build/hexapod_sim/install.log'
+[7.625s] Invoked command in '/home/waves/hexapod/src/hexapod_sim' returned '0': PYTHONPATH=/home/waves/hexapod/src/build/hexapod_sim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/hexapod_sim build --build-base /home/waves/hexapod/src/build/hexapod_sim/build install --record /home/waves/hexapod/src/build/hexapod_sim/install.log --install-scripts $base/lib/hexapod_sim --single-version-externally-managed install_data

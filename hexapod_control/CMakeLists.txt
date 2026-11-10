@@ -21,11 +21,15 @@ ament_target_dependencies(communication rclcpp hexapod_interfaces)
 add_executable(level src/leveler.cpp)
 ament_target_dependencies(level rclcpp hexapod_interfaces)
 
+add_executable(default src/default.cpp)
+ament_target_dependencies(default rclcpp hexapod_interfaces)
+
 install(TARGETS
   controller
   waypoints
   communication
   level
+  default
 
   DESTINATION lib/${PROJECT_NAME}
 )

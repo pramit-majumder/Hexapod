@@ -1,0 +1,35 @@
+running egg_info
+creating ../build/hexapod_sim/hexapod_sim.egg-info
+writing ../build/hexapod_sim/hexapod_sim.egg-info/PKG-INFO
+writing dependency_links to ../build/hexapod_sim/hexapod_sim.egg-info/dependency_links.txt
+writing entry points to ../build/hexapod_sim/hexapod_sim.egg-info/entry_points.txt
+writing requirements to ../build/hexapod_sim/hexapod_sim.egg-info/requires.txt
+writing top-level names to ../build/hexapod_sim/hexapod_sim.egg-info/top_level.txt
+writing manifest file '../build/hexapod_sim/hexapod_sim.egg-info/SOURCES.txt'
+reading manifest file '../build/hexapod_sim/hexapod_sim.egg-info/SOURCES.txt'
+writing manifest file '../build/hexapod_sim/hexapod_sim.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/waves/hexapod/src/build/hexapod_sim/build
+creating /home/waves/hexapod/src/build/hexapod_sim/build/lib
+creating /home/waves/hexapod/src/build/hexapod_sim/build/lib/hexapod_sim
+copying hexapod_sim/communication.py -> /home/waves/hexapod/src/build/hexapod_sim/build/lib/hexapod_sim
+copying hexapod_sim/__init__.py -> /home/waves/hexapod/src/build/hexapod_sim/build/lib/hexapod_sim
+running install
+running install_lib
+creating /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim
+copying /home/waves/hexapod/src/build/hexapod_sim/build/lib/hexapod_sim/communication.py -> /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim
+copying /home/waves/hexapod/src/build/hexapod_sim/build/lib/hexapod_sim/__init__.py -> /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim
+byte-compiling /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim/communication.py to communication.cpython-310.pyc
+byte-compiling /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/waves/hexapod/src/install/hexapod_sim/share/ament_index
+creating /home/waves/hexapod/src/install/hexapod_sim/share/ament_index/resource_index
+creating /home/waves/hexapod/src/install/hexapod_sim/share/ament_index/resource_index/packages
+copying resource/hexapod_sim -> /home/waves/hexapod/src/install/hexapod_sim/share/ament_index/resource_index/packages
+copying package.xml -> /home/waves/hexapod/src/install/hexapod_sim/share/hexapod_sim
+running install_egg_info
+Copying ../build/hexapod_sim/hexapod_sim.egg-info to /home/waves/hexapod/src/install/hexapod_sim/lib/python3.10/site-packages/hexapod_sim-0.0.0-py3.10.egg-info
+running install_scripts
+Installing communication script to /home/waves/hexapod/src/install/hexapod_sim/lib/hexapod_sim
+writing list of installed files to '/home/waves/hexapod/src/build/hexapod_sim/install.log'

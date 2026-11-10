@@ -68,7 +68,7 @@ class HexapodNode(Node):
             self.target[0] = coxa
             self.target[1] = femur
             self.target[2] = tibia
-        self.get_logger().info(f"Leg1:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
+        self.get_logger().info(f"Leg4:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
 
     def on_leg2(self, msg):
         coxa = (msg.coxa - 90) * math.pi / 180
@@ -88,7 +88,7 @@ class HexapodNode(Node):
             self.target[6] = coxa
             self.target[7] = femur
             self.target[8] = tibia
-        self.get_logger().info(f"Leg3:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
+        self.get_logger().info(f"Leg6:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
 
     def on_leg1(self, msg):
         coxa = (msg.coxa - 90) * math.pi / 180
@@ -98,7 +98,7 @@ class HexapodNode(Node):
             self.target[9] = coxa
             self.target[10] = femur
             self.target[11] = tibia
-        self.get_logger().info(f"Leg4:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
+        self.get_logger().info(f"Leg1:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
     
     def on_leg5(self, msg):
         coxa = (msg.coxa - 90) * math.pi / 180
@@ -118,7 +118,7 @@ class HexapodNode(Node):
             self.target[15] = coxa
             self.target[16] = femur
             self.target[17] = tibia
-        self.get_logger().info(f"Leg6:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
+        self.get_logger().info(f"Leg3:coxa={coxa:.3f}:femur={femur:.3f}:tibia={tibia:.3f}")
 
 def main():
     rclpy.init()
