@@ -74,6 +74,14 @@ def generate_launch_description():
     show_banner()
 
     nodes = []
+    nodes.append(
+        Node(
+            package='hexapod_sim',
+            executable='communication',
+            name='communication',
+            output='screen',
+        )
+    )
     for i in range(1, 7):
         nodes.append(
             Node(
