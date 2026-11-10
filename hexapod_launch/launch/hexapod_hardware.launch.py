@@ -71,12 +71,12 @@ def show_banner():
 
 
 def generate_launch_description():
-    show_banner()
+    # show_banner()
 
     nodes = []
     nodes.append(
         Node(
-            package='hexapod_sim',
+            package='hexapod_communication',
             executable='communication',
             name='communication',
             output='screen',

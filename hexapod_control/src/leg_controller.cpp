@@ -95,19 +95,28 @@ class control_leg : public rclcpp::Node
             // Save the current joint angles as the interpolation starting point
             this->start = {this->coxa, this->femur, this->tibia};
 
-            double a = this->femur_l;
-            double b = this->tibia_l;
+            double a = this->coxa_l;
+            double b = this->femur_l;
+            double c = this->tibia_l;
 
-            // Distance from the femur joint to the target foot position
-            double c = hypot(msg->z - 0, msg->y);
+            double d = hypot(msg->z - 0, msg->y);
 
-            // Calculate the angles required for the leg geometry
-            float alpha = atan2(-msg->z, msg->y) * 180.0f / M_PI;
+            float t1 = atan2(msg->y + a, msg->x);
+
+            float target_y = msg->y/sin(t1);
+            
+            d = hypot(target_y + a, msg->z);
+
+            float alpha  = abs(atan((target_y + a)/-msg->z));
+
+            if (std::isnan(alpha)) {
+                alpha = 0.0f;
+            }
 
             float beta = (
                 acos(
-                    ((a * a) + (c * c) - (b * b)) /
-                    (2 * a * c)
+                    ((b * b) + (d * d) - (c * c)) /
+                    (2 * b * d)
                 )
             ) * 180.0f / M_PI;
 
@@ -118,24 +127,13 @@ class control_leg : public rclcpp::Node
 
             float gamma = (
                 acos(
-                    ((a * a) + (b * b) - (c * c)) /
-                    (2 * a * b)
+                    ((b * b) + (c * c) - (d * d)) /
+                    (2 * b * c)
                 )
             ) * 180.0f / M_PI;
 
-            if (std::isnan(gamma)) {
-                gamma = 90.0f;
-            }
-
-            // Coxa angle
-            float delta = (
-                msg->x == 0
-                ? 0.0f
-                : (atan2(msg->x, msg->y) * 180.0f / M_PI)
-            );
-
             // IK angles into servo angles
-            this->coxa = 90 - delta;
+            this->coxa = t1;
 
             this->femur = std::clamp(
                 std::abs(alpha + beta + 90),
@@ -156,13 +154,6 @@ class control_leg : public rclcpp::Node
 
             RCLCPP_INFO(
                 this->get_logger(),
-                "Started Interpolating at %d samples and at %d Time",
-                this->sampling,
-                this->milliss
-            );
-
-            RCLCPP_INFO(
-                this->get_logger(),
                 "Coxa, Femur, Tibia: %f, %f, %f",
                 this->coxa,
                 this->femur,
@@ -171,6 +162,8 @@ class control_leg : public rclcpp::Node
 
             time = 0;
         }
+
+        
 
         rclcpp::TimerBase::SharedPtr timer;
 

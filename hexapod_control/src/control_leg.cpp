@@ -128,32 +128,34 @@ class control_leg : public rclcpp::Node
             return result;
         }
 
+
         void solver(const hexapod_interfaces::msg::Coordinates::SharedPtr msg){
 
             // Save the current joint angles as the interpolation starting point
             this->start = {this->coxa, this->femur, this->tibia};
 
-            double a = this->femur_l;
-            double b = this->tibia_l;
+            double a = this->coxa_l;
+            double b = this->femur_l;
+            double c = this->tibia_l;
 
             if(msg->sampling != 0){
                 this->sampling = msg->sampling;
             }
 
-            float t1 = atan2(msg->y,-msg->x);
+            float t1 = atan2(msg->y+a,-msg->x);
             float target_y = std::abs((msg->y)/sin(t1));
             RCLCPP_INFO(this->get_logger(), "target_y:%f sin(t1):%f msg->y:%f msg->y+coxa:%f msg->x:%f t1:%f", target_y, sin(t1) * 180.0f / M_PI, msg->y, msg->y+this->coxa, msg->x, sin(t1));
 
             // Distance from the femur joint to the target foot position
-            double c = hypot(msg->z - 0, target_y);
+            double d = hypot(msg->z, target_y);
 
             // Calculate the angles required for the leg geometry
             float alpha = atan2(-msg->z, target_y) * 180.0f / M_PI;
 
             float beta = (
                 acos(
-                    ((a * a) + (c * c) - (b * b)) /
-                    (2 * a * c)
+                    ((b * b) + (d * d) - (c * c)) /
+                    (2 * b * d)
                 )
             ) * 180.0f / M_PI;
 
@@ -164,10 +166,11 @@ class control_leg : public rclcpp::Node
 
             float gamma = (
                 acos(
-                    ((a * a) + (b * b) - (c * c)) /
-                    (2 * a * b)
+                    ((b * b) + (c * c) - (d * d)) /
+                    (2 * b * c)
                 )
             ) * 180.0f / M_PI;
+            
 
             if (std::isnan(gamma)) {
                 gamma = 90.0f;
