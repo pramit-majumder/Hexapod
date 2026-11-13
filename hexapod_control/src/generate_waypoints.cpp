@@ -79,6 +79,9 @@ class generate_waypoints : public rclcpp::Node
             {-70.0f, 70.0f, 75.0f},
             {0.0f, 70.0f, 75.0f}
         };
+        // middle leg x -35 0 35 y = 70 60 70
+        // outer leg x 0 35 y = 70 60 70 
+
 
         int i = 0;
         int j = 2;
