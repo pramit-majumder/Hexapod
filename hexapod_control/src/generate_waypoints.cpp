@@ -55,9 +55,9 @@ class generate_waypoints : public rclcpp::Node
             this->coords3->publish(node1);
             this->coords5->publish(node1);
 
-            this->coords2->publish(node2);
-            this->coords4->publish(node2);
-            this->coords6->publish(node2);
+            // this->coords2->publish(node2);
+            // this->coords4->publish(node2);
+            // this->coords6->publish(node2);
 
             RCLCPP_INFO(this->get_logger(), "I: %d", i);
             RCLCPP_INFO(this->get_logger(), "X: %f", node1.x);
@@ -74,10 +74,10 @@ class generate_waypoints : public rclcpp::Node
 
         // Three waypoints represented as X, Y and Z coordinate arrays
         float waypoints[4][3] = {
-            {25.0f, 50.0f, 112.0f},
+            {50.0f, 70.0f, 75.0f},
             {0.0f, 50.0f, 50.0f},
-            {-25.0f, 50.0f, 50.0f},
-            {-0.0f, 50.0f, 112.0f}
+            {-70.0f, 70.0f, 75.0f},
+            {0.0f, 70.0f, 75.0f}
         };
 
         int i = 0;
