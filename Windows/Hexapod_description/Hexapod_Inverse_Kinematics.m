@@ -32,84 +32,76 @@ t2 = beta + alpha;
 t3 = 180 - (gamma);
 
 
-// void solver(const hexapod_interfaces::msg::Coordinates::SharedPtr msg){
+void solver(const hexapod_interfaces::msg::Coordinates::SharedPtr msg){
 
-        //     // Save the current joint angles as the interpolation starting point
-        //     this->start = {this->coxa, this->femur, this->tibia};
+            // Save the current joint angles as the interpolation starting point
+            this->start = {this->coxa, this->femur, this->tibia};
 
-        //     double a = this->femur_l;
-        //     double b = this->tibia_l;
+            double a = this->coxa_l;
+            double b = this->femur_l;
+            double c = this->tibia_l;
 
-        //     // Distance from the femur joint to the target foot position
-        //     double c = hypot(msg->z - 0, msg->y);
+            double d = hypot(msg->z - 0, msg->y);
 
-        //     // Calculate the angles required for the leg geometry
-        //     float alpha = atan2(-msg->z, msg->y) * 180.0f / M_PI;
+            float t1 = atan2(msg->y + a, msg->x);
 
-        //     float delta = (
-        //         msg->x == 0
-        //         ? 0.0f
-        //         : (atan2(msg->x, msg->y + this->coxa_l) * 180.0f / M_PI)
-        //     );
-
-        //     float beta = (
-        //         acos(
-        //             ((a * a) + (c * c) - (b * b)) /
-        //             (2 * a * c)
-        //         )
-        //     ) * 180.0f / M_PI;
-
-        //     // Prevent invalid values when the target is unreachable
-        //     if (std::isnan(beta)) {
-        //         beta = 90.0f;
-        //     }
-
-        //     float gamma = (
-        //         acos(
-        //             ((a * a) + (b * b) - (c * c)) /
-        //             (2 * a * b)
-        //         )
-        //     ) * 180.0f / M_PI;
-
-        //     if (std::isnan(gamma)) {
-        //         gamma = 90.0f;
-        //     }
+            float target_y = msg->y/sin(t1);
             
+            d = hypot(target_y + a, msg->z);
 
-        //     // IK angles into servo angles
-        //     this->coxa = 90 - delta;
+            float alpha  = abs(atan((target_y + a)/-msg->z));
 
-        //     this->femur = std::clamp(
-        //         std::abs(alpha + beta + 90),
-        //         0.0f,
-        //         180.0f
-        //     );
+            if (std::isnan(alpha)) {
+                alpha = 0.0f;
+            }
+            RCLCPP_INFO(this->get_logger(), "target_y:%f sin(t1):%f msg->y:%f msg->y+coxa:%f msg->x:%f t1:%f", target_y, sin(t1) * 180.0f / M_PI, msg->y, msg->y+this->coxa, msg->x, sin(t1));
 
-        //     this->tibia = std::clamp(
-        //         std::abs(gamma),
-        //         0.0f,
-        //         180.0f
-        //     );
+            float beta = (
+                acos(
+                    ((b * b) + (d * d) - (c * c)) /
+                    (2 * b * d)
+                )
+            ) * 180.0f / M_PI;
 
-        //     // Set the calculated angles as the interpolation target
-        //     this->end = {this->coxa, this->femur, this->tibia};
+            // Prevent invalid values when the target is unreachable
+            if (std::isnan(beta)) {
+                beta = 90.0f;
+            }
 
-        //     target_reached = false;
+            float gamma = (
+                acos(
+                    ((b * b) + (c * c) - (d * d)) /
+                    (2 * b * c)
+                )
+            ) * 180.0f / M_PI;
 
-        //     RCLCPP_INFO(
-        //         this->get_logger(),
-        //         "Started Interpolating at %d samples and at %d Time",
-        //         this->sampling,
-        //         this->milliss
-        //     );
+            // IK angles into servo angles
+            this->coxa = t1 * 180.0f / M_PI;
 
-        //     RCLCPP_INFO(
-        //         this->get_logger(),
-        //         "Coxa, Femur, Tibia: %f, %f, %f",
-        //         this->coxa,
-        //         this->femur,
-        //         this->tibia
-        //     );
+            this->femur = std::clamp(
+                std::abs(alpha + beta + 90),
+                0.0f,
+                180.0f
+            );
 
-        //     time = 0;
-        // }
+            this->tibia = std::clamp(
+                std::abs(gamma),
+                0.0f,
+                180.0f
+            );
+
+            // Set the calculated angles as the interpolation target
+            this->end = {this->coxa, this->femur, this->tibia};
+
+            target_reached = false;
+
+            RCLCPP_INFO(
+                this->get_logger(),
+                "Coxa, Femur, Tibia: %f, %f, %f",
+                this->coxa,
+                this->femur,
+                this->tibia
+            );
+
+            time = 0;
+        }
